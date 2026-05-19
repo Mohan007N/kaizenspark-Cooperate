@@ -13,14 +13,24 @@ app = FastAPI(title="KaizenSpark Careers API")
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],  # Vite default port
+    allow_origins=[
+        "http://localhost:5173",
+        "http://localhost:3000",
+        "http://localhost:8080",  # Current Vite dev server
+        "https://kaizenspark-cooperate-1.onrender.com",  # Backend URL
+        "https://*.vercel.app",  # Vercel deployments
+        "https://kaizensparktech.com",  # Production domain (if applicable)
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Configure Resend API
-resend.api_key = os.getenv("RESEND_API_KEY", "re_jQPTUgQH_Q3rxFTexd144cZEgsaY538yX")
+# Configure Resend API - Use environment variable for security
+resend.api_key = os.getenv("RESEND_API_KEY")
+
+if not resend.api_key:
+    print("WARNING: RESEND_API_KEY environment variable not set!")
 
 # Create uploads directory if it doesn't exist
 UPLOAD_DIR = Path("uploads/resumes")
