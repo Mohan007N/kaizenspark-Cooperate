@@ -39,14 +39,11 @@ Vercel should auto-detect Vite, but verify these settings:
 
 ### 4. Add Environment Variables
 
-In the **Environment Variables** section, add:
+**IMPORTANT:** With the `vercel.json` proxy configuration, you do NOT need to add `VITE_API_URL` in Vercel.
 
-**Key:** `VITE_API_URL`  
-**Value:** `https://kaizenspark-cooperate-1.onrender.com`
+The proxy in `vercel.json` automatically routes `/api/*` requests to your Render backend.
 
-**Important:** 
-- No trailing slash in the URL
-- Make sure to add this for all environments (Production, Preview, Development)
+**Only add environment variables if you have other configuration needs.**
 
 ### 5. Deploy
 

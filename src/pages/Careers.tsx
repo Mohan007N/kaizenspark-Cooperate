@@ -253,7 +253,9 @@ const Careers = () => {
         formDataToSend.append('resume', formData.resume);
       }
 
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      // Use relative URL - Vercel will proxy to backend via vercel.json
+      // In development, falls back to VITE_API_URL
+      const API_URL = import.meta.env.VITE_API_URL || '';
       const response = await fetch(`${API_URL}/api/apply`, {
         method: 'POST',
         body: formDataToSend,
