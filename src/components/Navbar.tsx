@@ -273,7 +273,7 @@ const Navbar = () => {
           {/* Logo */}
           <button onClick={() => go("/")} className="flex items-center gap-2.5 group cursor-pointer">
             <div className="relative w-9 h-9 flex items-center justify-center transition-all duration-300 group-hover:scale-110">
-              <img src="/logo-mark.svg" alt="KaizenSpark Tech"
+              <img src="/logo.svg" alt="KaizenSpark Tech"
                 className="w-full h-full object-contain drop-shadow-[0_0_10px_rgba(26,45,140,0.5)]" />
             </div>
             <div className="flex items-baseline gap-1">
