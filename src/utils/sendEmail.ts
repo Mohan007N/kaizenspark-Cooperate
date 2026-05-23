@@ -8,7 +8,7 @@ interface EmailData {
 
 export const sendEmail = async (data: EmailData): Promise<{ success: boolean; error?: string }> => {
   try {
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    const API_URL = import.meta.env.VITE_API_URL || '';
     
     const response = await fetch(`${API_URL}/api/contact`, {
       method: 'POST',

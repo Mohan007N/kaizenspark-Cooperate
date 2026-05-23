@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Server, Network, Cloud, Video, Eye, Cpu, ArrowRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 
 const capabilities = [
   {

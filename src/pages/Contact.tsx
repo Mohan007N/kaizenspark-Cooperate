@@ -82,7 +82,7 @@ const QuickForm = () => {
         <AlertCircle className="w-8 h-8 text-red-400" />
       </div>
       <h4 className="text-white font-bold text-xl">Something went wrong</h4>
-      <p className="text-slate-400 text-sm max-w-xs">Try again or email us at <span className="text-blue-400">hr@kaizensparktech.com</span></p>
+      <p className="text-slate-400 text-sm max-w-xs">Try again or email us at <span className="text-blue-400">officials@kaizensparktech.com</span></p>
       <button onClick={() => setStatus("idle")} className="text-blue-400 text-sm font-semibold hover:text-blue-300">Try Again</button>
     </div>
   );
@@ -306,6 +306,17 @@ const Contact = () => {
                     <div>
                       <p className="text-[10px] font-bold uppercase tracking-widest text-white/25 mb-0.5">Email</p>
                       <p className="text-[13px] text-white/65 font-medium">hr@kaizensparktech.com</p>
+                    </div>
+                  </a>
+
+                  <a href="mailto:officials@kaizensparktech.com"
+                    className="flex items-center gap-4 p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-blue-400/20 transition-all group">
+                    <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center shrink-0 group-hover:bg-blue-500/20 transition-colors">
+                      <Mail className="w-4 h-4 text-blue-400" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-white/25 mb-0.5">Official Email</p>
+                      <p className="text-[13px] text-white/65 font-medium">officials@kaizensparktech.com</p>
                     </div>
                   </a>
 

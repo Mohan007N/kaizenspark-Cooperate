@@ -216,7 +216,7 @@ const PrivacyPolicy = () => {
                 </p>
                 <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
                   <p className="text-white font-semibold mb-2">KaizenSpark Tech Pvt Ltd</p>
-                  <p className="text-slate-300">Email: <a href="mailto:hr@kaizensparktech.com" className="text-blue-400 hover:text-blue-300">hr@kaizensparktech.com</a></p>
+                  <p className="text-slate-300">Email: <a href="mailto:officials@kaizensparktech.com" className="text-blue-400 hover:text-blue-300">officials@kaizensparktech.com</a></p>
                   <p className="text-slate-300">Phone: <a href="tel:+919150684544" className="text-blue-400 hover:text-blue-300">+91 91506 84544</a></p>
                   <p className="text-slate-300">Location: Chennai, Tamil Nadu, India</p>
                 </div>

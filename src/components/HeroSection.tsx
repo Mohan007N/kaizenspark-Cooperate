@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronRight, Sparkles, Zap, TrendingUp, ArrowDown } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import LiveDashboard from "./LiveDashboard";
 
@@ -13,6 +13,19 @@ const HeroSection = () => {
 
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLDivElement>(null);
+
+  const specialisms = [
+    "Digital Marketing", "Web Development", "Mobile Apps",
+    "UI/UX Design", "AI & Automation", "E-commerce",
+    "Enterprise Solutions", "SEO & SEM", "Startup Support",
+    "Cloud & DevOps", "Brand Identity", "CRM & ERP",
+  ];
+  const [wordIndex, setWordIndex] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => setWordIndex(i => (i + 1) % specialisms.length), 2200);
+    return () => clearInterval(t);
+  }, []);
 
   // Mouse parallax effect
   useEffect(() => {
@@ -79,11 +92,8 @@ const HeroSection = () => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/30 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 backdrop-blur-sm mb-8 shadow-lg shadow-blue-500/10 hover:shadow-blue-500/20 transition-all group cursor-pointer"
           >
             <Sparkles size={14} className="text-blue-400 group-hover:rotate-12 transition-transform" />
-            <span className="text-[11px] text-slate-200 uppercase tracking-widest font-bold flex items-center gap-2">
-              KaizenSpark Tech
-            </span>
-            <span className="text-[10px] text-blue-400 font-semibold px-2 py-0.5 rounded-full bg-blue-500/20 animate-pulse">
-              AI-Powered
+            <span className="text-[11px] text-slate-200 uppercase tracking-widest font-bold">
+              Chennai's Premier Digital Agency
             </span>
           </motion.div>
 
@@ -94,18 +104,45 @@ const HeroSection = () => {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight tracking-tight"
           >
-            <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent">
-              Simplifying Enterprise IT Infrastructure & Security
+            <span className="bg-gradient-to-r from-white via-blue-100 to-slate-200 bg-clip-text text-transparent block">
+              We Build Digital Products
+            </span>
+            <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent block">
+              That Drive Real Growth
             </span>
           </motion.h1>
+
+          {/* Specializing in — animated word cycler */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.55, duration: 0.6 }}
+            className="flex items-center gap-2 mb-5 h-6"
+          >
+            <span className="text-sm text-slate-500 font-medium leading-none">Specializing in</span>
+            <div className="relative overflow-hidden h-5 flex items-center min-w-[200px]">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={wordIndex}
+                  initial={{ y: 16, opacity: 0 }}
+                  animate={{ y: 0,  opacity: 1 }}
+                  exit={{  y: -16, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="absolute inset-0 flex items-center text-sm font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent whitespace-nowrap"
+                >
+                  {specialisms[wordIndex]}
+                </motion.span>
+              </AnimatePresence>
+            </div>
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 1 }}
-            className="text-lg md:text-xl text-slate-400 mb-10 max-w-xl leading-relaxed"
+            className="text-base md:text-lg text-slate-400 mb-10 max-w-xl leading-relaxed"
           >
-            End-to-end IT solutions covering infrastructure, cloud, security, and automation for modern enterprises.
+            From startups to enterprises — we design, develop, and scale digital experiences that convert visitors into customers and ideas into reality.
           </motion.p>
 
           {/* CTA buttons */}

@@ -18,16 +18,19 @@ app.add_middleware(
         "http://localhost:3000",
         "http://localhost:8080",  # Current Vite dev server
         "https://kaizenspark-cooperate-1.onrender.com",  # Backend URL
-        "https://*.vercel.app",  # Vercel deployments
-        "https://kaizensparktech.com",  # Production domain (if applicable)
+        "https://kaizensparktech.com",  # Production domain
     ],
+    allow_origin_regex="https://.*\\.vercel\\.app",  # Matches dynamic Vercel preview branches
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Configure Resend API - Use environment variable for security
+# Configure Resend API
 resend.api_key = os.getenv("RESEND_API_KEY")
+RESEND_FROM_EMAIL = os.getenv("RESEND_FROM_EMAIL", "KaizenSpark Tech <onboarding@resend.dev>")
+RECIPIENT_HR_EMAIL = os.getenv("VITE_RECIPIENT_EMAIL", "hr@kaizensparktech.com")
+RECIPIENT_OFFICIALS_EMAIL = os.getenv("VITE_OFFICIALS_EMAIL", "officials@kaizensparktech.com")
 
 if not resend.api_key:
     print("WARNING: RESEND_API_KEY environment variable not set!")
@@ -238,8 +241,9 @@ async def submit_application(
         # Send email notification via Resend
         try:
             params = {
-                "from": "KaizenSpark Careers <onboarding@resend.dev>",
-                "to": ["hr@kaizensparktech.com"],
+                "from": RESEND_FROM_EMAIL,
+                "to": [RECIPIENT_HR_EMAIL],
+                "reply_to": email,
                 "subject": f"New Application: {jobTitle} - {name}",
                 "html": html_content,
             }
@@ -320,8 +324,9 @@ async def submit_contact(form: ContactForm):
         """
         
         params = {
-            "from": "KaizenSpark Contact Form <onboarding@resend.dev>",
-            "to": ["hr@kaizensparktech.com"],
+            "from": RESEND_FROM_EMAIL,
+            "to": [RECIPIENT_OFFICIALS_EMAIL],
+            "reply_to": form.email,
             "subject": f"New Contact Form Submission from {form.name}",
             "html": html_content,
         }
