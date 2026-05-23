@@ -21,7 +21,7 @@ const Footer = () => {
           <div className="md:col-span-2 flex flex-col pr-0 md:pr-8">
             <div className="flex items-center gap-2.5 mb-5 cursor-pointer" onClick={() => handleLinkClick("/")}>
               <div className="w-8 h-8 flex items-center justify-center">
-                <img src="/logo.svg" alt="KaizenSpark Tech" className="w-full h-full object-contain" />
+                <img src="/ChatGPT Image May 23, 2026, 07_58_53 PM.png" alt="KaizenSpark Tech" className="w-full h-full object-contain" />
               </div>
               <div className="flex flex-col">
                 <span className="text-white font-black text-sm tracking-tight">KaizenSpark</span>
