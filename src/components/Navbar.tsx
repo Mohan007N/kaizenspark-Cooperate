@@ -680,6 +680,11 @@ const Navbar = () => {
               active={location.pathname === "/careers"}
               onClick={() => go("/careers")} />
 
+            {/* Blog */}
+            <NavBtn label="Blog"
+              active={location.pathname === "/blog"}
+              onClick={() => go("/blog")} />
+
             {/* Contact */}
             <NavBtn label="Contact"
               active={location.pathname === "/contact"}
@@ -902,11 +907,12 @@ const Navbar = () => {
               </AnimatePresence>
             </div>
 
-            {/* Partnership, Careers, Contact */}
+            {/* Partnership, Careers, Contact, Blog */}
             {[
               { label: "Become a Partner", path: "/partnership" },
               { label: "Refer a Client",   path: "/partnership/refer-client" },
               { label: "Careers",          path: "/careers" },
+              { label: "Blog",             path: "/blog" },
               { label: "Contact",          path: "/contact" },
             ].map((l) => (
               <button key={l.path} onClick={() => go(l.path)}

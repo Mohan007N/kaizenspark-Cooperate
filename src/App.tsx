@@ -26,6 +26,7 @@ import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy   from "./pages/CookiePolicy";
 import NotFound       from "./pages/NotFound";
 import CookieConsent  from "./components/CookieConsent";
+import Blog           from "./pages/Blog";
 
 const queryClient = new QueryClient();
 
@@ -60,6 +61,7 @@ const App = () => (
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/cookie-policy"  element={<CookiePolicy />} />
+          <Route path="/blog"           element={<Blog />} />
           <Route path="*"               element={<NotFound />} />
         </Routes>
       </BrowserRouter>

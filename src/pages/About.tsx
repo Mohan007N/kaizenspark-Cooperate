@@ -154,10 +154,10 @@ const About = () => {
               className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight mb-6"
             >
               <span className="bg-gradient-to-r from-white via-blue-100 to-slate-200 bg-clip-text text-transparent block">
-                We Create Digital
+                We Engineer
               </span>
               <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent block">
-                Experiences
+                Enterprise Systems
               </span>
             </motion.h1>
 
@@ -167,7 +167,7 @@ const About = () => {
               transition={{ delay: 0.45, duration: 0.8 }}
               className="text-slate-400 text-base md:text-lg leading-relaxed mb-10 max-w-lg"
             >
-              KaizenSpark Tech is a dynamic and innovative technology company dedicated to driving digital transformation and empowering businesses to thrive in the digital age — specializing in software development, web development, data analytics, cloud computing, cybersecurity, IoT, and more.
+              KaizenSpark Tech is an elite software engineering company specializing in high-performance cloud infrastructure, advanced AI automation, and secure enterprise systems. We partner with scaling organizations to architect reliable, secure, and highly efficient technical systems.
             </motion.p>
 
             <motion.div
@@ -260,9 +260,9 @@ const About = () => {
                   </motion.div>
                 </div>
 
-                <h3 className="text-white text-2xl font-extrabold mb-2 tracking-tight">Digital Transformation</h3>
+                <h3 className="text-white text-2xl font-extrabold mb-2 tracking-tight">Scalable Architecture</h3>
                 <p className="text-slate-400 text-sm leading-relaxed max-w-[220px]">
-                  Reimagining the future of digital experiences
+                  Engineering modern cloud-native systems
                 </p>
               </div>
 
@@ -335,7 +335,7 @@ const About = () => {
             Passionate about innovation?
           </h2>
           <p className="text-slate-400 text-base sm:text-lg mb-8 leading-relaxed">
-            Join our team and help shape the future of digital solutions.
+            Join our team and help shape the future of high-scale enterprise systems.
           </p>
           <motion.button
             onClick={() => navigate("/careers")}

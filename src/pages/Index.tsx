@@ -2,16 +2,23 @@ import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import TrustedCompanies from "@/components/TrustedCompanies";
-import BusinessEmailSection from "@/components/BusinessEmailSection";
+import FounderSection from "@/components/FounderSection";
 import ServicesShowcase from "@/components/ServicesShowcase";
+import EngineeringProcess from "@/components/EngineeringProcess";
+import CaseStudiesSection from "@/components/CaseStudiesSection";
+import WhyPartnerSection from "@/components/WhyPartnerSection";
+import IndustriesSection from "@/components/IndustriesSection";
+import GlobalPresence from "@/components/GlobalPresence";
+import BusinessEmailSection from "@/components/BusinessEmailSection";
+import TechStackMarquee from "@/components/TechStackMarquee";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import BlogSection from "@/components/BlogSection";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { BookOpen, Zap, Settings, ArrowRight, ChevronDown, Send } from "lucide-react";
-import TechStackMarquee from "@/components/TechStackMarquee";
-import ClientStoriesMarquee from "@/components/ClientStoriesMarquee";
 import { useScrollReveal } from "@/hooks/useParallax";
 
 const quickLinks = [
@@ -25,8 +32,8 @@ const quickLinks = [
   },
   {
     icon: Zap,
-    title: "Our Services",
-    desc: "Infrastructure, cloud, security, AI automation, managed IT support, and custom ERP/CRM — all in one integrator.",
+    title: "Engineering Solutions",
+    desc: "Scalable software systems, AI-powered business process automation, cloud architecture, and UI/UX design systems.",
     href: "/services",
     color: "from-indigo-500 to-violet-500",
     border: "border-indigo-500/20",
@@ -34,7 +41,7 @@ const quickLinks = [
   {
     icon: Settings,
     title: "Our Process",
-    desc: "See how we take you from discovery and architecture through deployment, QA, and ongoing managed support.",
+    desc: "See how we take you from discovery and architecture through agile deployment, rigorous testing, and managed support.",
     href: "/process",
     color: "from-emerald-500 to-teal-500",
     border: "border-emerald-500/20",
@@ -43,37 +50,29 @@ const quickLinks = [
 
 const faqs = [
   {
-    q: "What services does KaizenSpark offer?",
-    a: "We offer end-to-end digital services including Web & App Development, UI/UX Design, Digital Marketing, Enterprise Solutions (ERP/CRM), AI & Automation, and Startup Support — all under one roof."
+    q: "What engineering solutions does KaizenSpark Tech offer?",
+    a: "We design, build, and operate high-scale software systems, custom enterprise ERP/CRM solutions, AI workflow automation platforms, cloud-native deployments (AWS/GCP/Azure), DevOps pipelines, and digital interface systems."
   },
   {
-    q: "How long does a typical project take?",
-    a: "It depends on scope. A landing page or marketing site typically takes 1–2 weeks. A full web application or enterprise platform ranges from 4–12 weeks. We work in agile sprints and share progress weekly."
+    q: "What is your typical software engineering timeline?",
+    a: "Our deliverables are structured in agile sprints. A targeted MVP or specialized automation integration typically launches within 3–4 weeks. Large-scale enterprise platforms or scalable SaaS architecture ranges from 8–16 weeks."
   },
   {
-    q: "Do you offer post-launch support?",
-    a: "Yes. Every project includes a post-launch warranty period, and we offer dedicated SLA-based maintenance plans covering uptime monitoring, security patches, and iterative feature updates."
+    q: "How do you ensure enterprise-grade security and reliability?",
+    a: "All of our systems follow a secure-by-design approach. We implement strict zero-trust network configurations, end-to-end data encryption, continuous CI/CD security scanning, and automatic container backups."
   },
   {
-    q: "What technologies do you use?",
-    a: "Our stack includes React, Next.js, TypeScript, Node.js, PostgreSQL, MongoDB, AWS, Docker, and more. We choose the right technology for each project — not the trendiest one."
+    q: "Do you sign Non-Disclosure Agreements (NDAs)?",
+    a: "Yes. To protect your proprietary logic, IP, and company data, we execute comprehensive mutual NDAs before any technical blueprints or architecture requirements are shared."
   },
   {
-    q: "How much does it cost to work with KaizenSpark?",
-    a: "Our pricing depends on project complexity, timeline, and requirements. We offer transparent, milestone-based pricing. Contact us for a free consultation and rough estimate within 24 hours."
+    q: "Do you offer post-launch managed support?",
+    a: "Yes. We offer service-level agreement (SLA) based support covering 24/7 server monitoring, performance optimization, security updates, and iterative feature development."
   },
   {
-    q: "Do you work with startups and student projects?",
-    a: "Absolutely. We love working with early-stage startups and passionate founders. We have special packages for MVPs and student-led ventures to get you launched affordably and professionally."
-  },
-  {
-    q: "Can you help with SEO and digital marketing?",
-    a: "Yes — our dedicated marketing team handles SEO, SEM, social media, content marketing, and performance advertising to grow your online presence and deliver measurable results."
-  },
-  {
-    q: "How do I get started?",
-    a: "Simply reach out via our Contact page or call us directly. We'll schedule a free discovery call, understand your requirements, and send you a tailored proposal within 24 hours."
-  },
+    q: "How can we get started with a project proposal?",
+    a: "Simply book a technical discovery call via our website. Our software architects will discuss your technical requirements, design an initial blueprint, and deliver a comprehensive proposal within 24 hours."
+  }
 ];
 
 const Index = () => {
@@ -88,28 +87,47 @@ const Index = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
-    <div className="relative">
+    <div className="relative bg-slate-950 min-h-screen text-slate-100 overflow-x-hidden">
       <ScrollProgress />
       <Navbar />
       <main className="relative">
-        {/* Hero */}
+        {/* 1. Hero Section */}
         <HeroSection />
 
-        {/* Trusted companies ticker */}
+        {/* 2. Trusted Partners (Upgraded Ticker) */}
         <TrustedCompanies />
 
-        {/* What We Do – Services */}
+        {/* 3. Founder Section ("Built by Founders, Not Freelancers") */}
+        <FounderSection />
+
+        {/* 4. Engineering Solutions Showcase */}
         <ServicesShowcase />
 
-        {/* Business Email Package */}
+        {/* 5. Predictable Engineering Process */}
+        <EngineeringProcess />
+
+        {/* 6. Case Studies Section (Challenge, Solution, Tech Stack, Hard Metrics) */}
+        <CaseStudiesSection />
+
+        {/* 7. Why Partner Section (Traditional vs KaizenSpark Table) */}
+        <WhyPartnerSection />
+
+        {/* 8. Industries We Serve Grid */}
+        <IndustriesSection />
+
+        {/* 9. Global Presence Section (Flag cards & global reach stats) */}
+        <GlobalPresence />
+
+        {/* 10. Tech Stack Marquee */}
+        <TechStackMarquee />
+
+        {/* 11. Business Email Onboarding Package */}
         <BusinessEmailSection />
 
-        {/* Tech Stack Marquee */}
-        <TechStackMarquee />
-        {/* Quick-nav cards */}
-        <section className="relative py-24 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950" />
-          <div className="container relative z-10">
+        {/* 12. Quick Navigation Section */}
+        <section className="relative py-24 overflow-hidden border-t border-slate-900">
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900/10 to-slate-950" />
+          <div className="container relative z-10 mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -123,7 +141,7 @@ const Index = () => {
                 </span>
               </h2>
               <p className="text-slate-400 max-w-xl mx-auto">
-                Enterprise IT solutions designed, deployed, and operated for businesses that demand reliability and scale.
+                Enterprise software architecture and infrastructure solutions engineered for reliability, safety, and business value.
               </p>
             </motion.div>
 
@@ -162,13 +180,13 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Final CTA */}
-        <FinalCTA />
+        {/* 13. Engineering Insights Blog */}
+        <BlogSection />
 
-        {/* Client Stories */}
-        <ClientStoriesMarquee />
+        {/* 14. Client Outcomes Testimonials */}
+        <TestimonialsSection />
 
-        {/* ── FAQ SECTION ── */}
+        {/* 14. Descriptive FAQ Section */}
         <section className="relative py-24 border-t border-slate-900 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900/30 to-slate-950" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-blue-500/4 rounded-full blur-3xl pointer-events-none" />
@@ -182,10 +200,10 @@ const Index = () => {
               className="text-center mb-14"
             >
               <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-3">
-                Frequently asked{" "}
-                <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">questions</span>
+                Frequently Asked{" "}
+                <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Questions</span>
               </h2>
-              <p className="text-slate-400 text-sm">Everything you need to know about working with KaizenSpark.</p>
+              <p className="text-slate-400 text-sm">Everything you need to know about working with KaizenSpark Tech.</p>
             </motion.div>
 
             <div className="space-y-3">
@@ -231,7 +249,7 @@ const Index = () => {
           </div>
         </section>
 
-        {/* ── NEWSLETTER SECTION ── */}
+        {/* 15. Premium Newsletter subscription */}
         <section className="relative py-16 border-t border-slate-900 bg-slate-950/60">
           <div className="container max-w-xl mx-auto px-4 text-center">
             <motion.div
@@ -240,9 +258,9 @@ const Index = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h3 className="text-xl font-bold text-white mb-1">Stay in the loop</h3>
+              <h3 className="text-xl font-bold text-white mb-1">Stay Updated</h3>
               <p className="text-slate-400 text-sm mb-6">
-                Get the latest from KaizenSpark — tips, updates, and exclusive offers.
+                Receive technology blueprints, architecture reviews, and engineering insights.
               </p>
 
               {newsSent ? (
@@ -251,7 +269,7 @@ const Index = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   className="text-emerald-400 font-semibold text-sm"
                 >
-                  ✓ You're subscribed! Welcome to the community.
+                  ✓ Subscribed! Welcome to the KaizenSpark community.
                 </motion.p>
               ) : (
                 <form
@@ -263,7 +281,7 @@ const Index = () => {
                     required
                     value={newsEmail}
                     onChange={(e) => setNewsEmail(e.target.value)}
-                    placeholder="you@example.com"
+                    placeholder="architect@yourcompany.com"
                     className="flex-grow px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 focus:border-blue-500/60 text-white text-sm outline-none transition-colors placeholder-slate-500"
                   />
                   <button
@@ -277,6 +295,9 @@ const Index = () => {
             </motion.div>
           </div>
         </section>
+
+        {/* 16. Final Scalable Systems CTA */}
+        <FinalCTA />
       </main>
       <Footer />
     </div>

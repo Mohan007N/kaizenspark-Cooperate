@@ -15,13 +15,14 @@ type FormStatus = "idle" | "submitting" | "success" | "error";
 /* ─────────────────────────────────── offices */
 const offices = [
   { city: "Chennai", address: "Tamil Nadu, India", primary: true },
+  { city: "Chidambaram", address: "Tamil Nadu, India", primary: false },
 ];
 
 const socials = [
   { icon: Linkedin,  label: "LinkedIn",  href: "https://www.linkedin.com/company/kaizensparktech/", color: "hover:text-blue-500 hover:border-blue-500/40" },
   { icon: Twitter,   label: "Twitter",   href: "#",  color: "hover:text-sky-400 hover:border-sky-400/40" },
   { icon: Youtube,   label: "YouTube",   href: "#",  color: "hover:text-red-500 hover:border-red-500/40" },
-  { icon: Instagram, label: "Instagram", href: "#",  color: "hover:text-pink-500 hover:border-pink-500/40" },
+  { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/kaizenspark_tech.officials/",  color: "hover:text-pink-500 hover:border-pink-500/40" },
   { icon: Facebook,  label: "Facebook",  href: "#",  color: "hover:text-blue-600 hover:border-blue-600/40" },
 ];
 
@@ -304,7 +305,7 @@ const Contact = () => {
                       <Mail className="w-4 h-4 text-amber-400" />
                     </div>
                     <div>
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-white/25 mb-0.5">Email</p>
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-white/25 mb-0.5">Careers Email</p>
                       <p className="text-[13px] text-white/65 font-medium">hr@kaizensparktech.com</p>
                     </div>
                   </a>
