@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
-import { Briefcase, MapPin, Clock, ArrowRight, Users, Zap, Heart, TrendingUp, Upload, CheckCircle2, Loader2, AlertCircle, X, Award, Coffee, Rocket, Globe, Code, Palette, Database, Brain, DollarSign, Umbrella, GraduationCap, Plane, Mail, Film } from 'lucide-react';
+import { Briefcase, MapPin, Clock, ArrowRight, Users, Zap, Heart, TrendingUp, Upload, CheckCircle2, Loader2, AlertCircle, X, Award, Coffee, Rocket, Globe, Code, Palette, DollarSign, Umbrella, GraduationCap, Plane, Mail, Film } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ScrollProgress from '@/components/ScrollProgress';
@@ -35,56 +35,56 @@ const openings = [
   },
   {
     id: 2,
-    title: 'Cloud Infrastructure Engineer',
-    department: 'Digital Infrastructure',
+    title: 'Video Editor',
+    department: 'Creative Media',
     location: 'Chennai, India (Hybrid)',
     type: 'Full-time',
     experience: '1 - 3 years',
-    salary: '₹80,000 / month',
-    icon: Database,
-    color: 'from-purple-500 to-indigo-500',
-    skills: ['AWS', 'Terraform', 'Kubernetes', 'Docker', 'CI/CD Pipelines', 'Ansible', 'Linux'],
-    description: 'We are seeking an Infrastructure Engineer to design, deploy, and maintain robust cloud solutions. You will automate deployment pipelines and optimize Kubernetes environments for maximum scaling and performance.',
+    salary: '₹35,000 / month',
+    icon: Film,
+    color: 'from-rose-500 to-red-500',
+    skills: ['Adobe Premiere Pro', 'After Effects', 'Color Grading', 'DaVinci Resolve', 'Sound Design', 'Motion Graphics', 'Cinematography'],
+    description: 'We are seeking a creative Video Editor to produce engaging, high-retention video content, commercial spots, and product walkthroughs for our B2B clients and social channels.',
     responsibilities: [
-      'Architect and build zero-trust cloud infrastructure on AWS and GCP',
-      'Manage container orchestration systems using Kubernetes (EKS/GKE)',
-      'Write infrastructure-as-code modules using Terraform',
-      'Optimize continuous deployment (CI/CD) workflows to maximize stability',
-      'Implement proactive systems telemetry using Prometheus, Grafana, and ELK',
+      'Edit raw footage into high-retention video content for social media and marketing campaigns',
+      'Design engaging motion graphics, lower thirds, and titles using After Effects',
+      'Apply professional color grading and audio enhancement to all video deliveries',
+      'Collaborate with content creators and designers to conceptualize creative storyboards',
+      'Organize and manage media libraries and project assets efficiently',
     ],
     requirements: [
-      'Strong knowledge of Linux systems administration and scripting (Bash/Python)',
-      'Hands-on experience with Terraform, Docker, and Kubernetes clusters',
-      'Familiarity with cloud security compliance standards and IAM management',
-      'Excellent troubleshooting and system debugging skills',
-      'Degree in Computer Science, Software Engineering, or equivalent practical skills',
+      '1-3 years of professional editing experience with a stellar showreel',
+      'Expert command of Adobe Premiere Pro, After Effects, and DaVinci Resolve',
+      'Deep understanding of pacing, storytelling, sound design, and color theory',
+      'Ability to deliver projects within tight deadlines under minimal supervision',
+      'Experience creating content specifically optimized for social platforms (YouTube, LinkedIn, Instagram)',
     ],
   },
   {
     id: 3,
-    title: 'AI & Automation Engineer',
-    department: 'AI Automation',
+    title: 'Graphic Designer',
+    department: 'Creative Media',
     location: 'Chennai, India (Hybrid)',
     type: 'Full-time',
     experience: '1 - 3 years',
-    salary: '₹95,000 / month',
-    icon: Brain,
-    color: 'from-emerald-500 to-teal-500',
-    skills: ['Python', 'LangChain', 'LangGraph', 'Vector Databases', 'OpenAI API', 'FastAPI', 'PyTorch'],
-    description: 'We are looking for an AI Engineer to develop secure high-throughput LLM agent pipelines. You will orchestrate state machines, persistence layers, and semantic caches to automate enterprise B2B backends.',
+    salary: '₹30,000 / month',
+    icon: Palette,
+    color: 'from-amber-500 to-yellow-500',
+    skills: ['Figma', 'Adobe Photoshop', 'Adobe Illustrator', 'Brand Identity', 'Vector Illustration', 'Typography', 'InDesign'],
+    description: 'We are looking for a Graphic Designer to craft eye-catching marketing collateral, social media creatives, brand assets, and digital illustrations that elevate KaizenSpark and client brands.',
     responsibilities: [
-      'Develop production-grade AI agent systems using LangGraph and LangChain',
-      'Configure vector search indices (Qdrant, Pinecone, pgvector) for sub-20ms retrieval',
-      'Build scalable, high-concurrency B2B backends in Python and FastAPI',
-      'Implement structured LLM parsing pipelines and human-in-the-loop validation tools',
-      'Optimize model fine-tuning workflows and custom transformer pipelines',
+      'Conceptualize and design high-impact graphics for social media, blogs, and ad campaigns',
+      'Create consistent brand assets, brochures, slide decks, and sales collateral',
+      'Collaborate with UI/UX engineers to maintain design consistency and brand books',
+      'Translate complex technical concepts into clear, beautiful vector illustrations and infographics',
+      'Iterate on design concepts based on internal feedback and performance analytics',
     ],
     requirements: [
-      'Expert proficiency in Python and async backend development',
-      'Deep understanding of generative AI model constraints and prompt engineering',
-      'Experience setting up HNSW indices and hybrid vector search algorithms',
-      'Strong problem-solving capability and background in algorithms/data structures',
-      'Background in AI research or software engineering with major LLM achievements',
+      '1-3 years of graphic design experience with a robust design portfolio',
+      'High proficiency in Figma, Adobe Illustrator, and Adobe Photoshop',
+      'Solid grasp of color hierarchy, layout design, grid systems, and typography',
+      'Strong communication skills and ability to present design concepts clearly',
+      'A keen eye for detail and appreciation for modern, minimalist tech brand aesthetics',
     ],
   },
 ];
@@ -218,9 +218,8 @@ const Careers = () => {
         formDataToSend.append('resume', formData.resume);
       }
 
-      // Use relative URL - Vercel will proxy to backend via vercel.json
-      // In development, falls back to VITE_API_URL
-      const API_URL = import.meta.env.VITE_API_URL || '';
+      // In development, falls back to VITE_API_URL or live Render URL
+      const API_URL = import.meta.env.VITE_API_URL || 'https://kaizenspark-cooperate-1.onrender.com';
       const response = await fetch(`${API_URL}/api/apply`, {
         method: 'POST',
         body: formDataToSend,

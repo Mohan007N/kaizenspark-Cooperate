@@ -684,11 +684,6 @@ const Navbar = () => {
             <NavBtn label="Blog"
               active={location.pathname === "/blog"}
               onClick={() => go("/blog")} />
-
-            {/* Contact */}
-            <NavBtn label="Contact"
-              active={location.pathname === "/contact"}
-              onClick={() => go("/contact")} />
           </nav>
 
           {/* ── Contact Pill CTA (Right) ── */}
@@ -907,13 +902,12 @@ const Navbar = () => {
               </AnimatePresence>
             </div>
 
-            {/* Partnership, Careers, Contact, Blog */}
+            {/* Partnership, Careers, Blog */}
             {[
               { label: "Become a Partner", path: "/partnership" },
               { label: "Refer a Client",   path: "/partnership/refer-client" },
               { label: "Careers",          path: "/careers" },
               { label: "Blog",             path: "/blog" },
-              { label: "Contact",          path: "/contact" },
             ].map((l) => (
               <button key={l.path} onClick={() => go(l.path)}
                 className={`block w-full text-left px-4 py-2.5 text-xs font-medium rounded-lg transition-all ${

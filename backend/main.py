@@ -27,13 +27,13 @@ app.add_middleware(
 )
 
 # Configure Resend API
-resend.api_key = os.getenv("RESEND_API_KEY")
+resend.api_key = os.getenv("RESEND_API_KEY") or os.getenv("VITE_RESEND_API_KEY")
 RESEND_FROM_EMAIL = os.getenv("RESEND_FROM_EMAIL", "KaizenSpark Tech <onboarding@resend.dev>")
-RECIPIENT_HR_EMAIL = os.getenv("VITE_RECIPIENT_EMAIL", "hr@kaizensparktech.com")
-RECIPIENT_OFFICIALS_EMAIL = os.getenv("VITE_OFFICIALS_EMAIL", "officials@kaizensparktech.com")
+RECIPIENT_HR_EMAIL = os.getenv("RECIPIENT_EMAIL") or os.getenv("VITE_RECIPIENT_EMAIL") or "hr@kaizensparktech.com"
+RECIPIENT_OFFICIALS_EMAIL = os.getenv("RECIPIENT_OFFICIALS_EMAIL") or os.getenv("VITE_OFFICIALS_EMAIL") or "officials@kaizensparktech.com"
 
 if not resend.api_key:
-    print("WARNING: RESEND_API_KEY environment variable not set!")
+    print("WARNING: RESEND_API_KEY / VITE_RESEND_API_KEY environment variable not set!")
 
 # Create uploads directory if it doesn't exist
 UPLOAD_DIR = Path("uploads/resumes")

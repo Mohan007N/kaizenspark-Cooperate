@@ -27,6 +27,8 @@ import CookiePolicy   from "./pages/CookiePolicy";
 import NotFound       from "./pages/NotFound";
 import CookieConsent  from "./components/CookieConsent";
 import Blog           from "./pages/Blog";
+import OurWork        from "./pages/OurWork";
+import IndustryDetailPage from "./pages/IndustryDetailPage";
 
 const queryClient = new QueryClient();
 
@@ -58,10 +60,12 @@ const App = () => (
           <Route path="/careers"        element={<Careers />} />
           <Route path="/managed-services" element={<ManagedServices />} />
           <Route path="/solutions"      element={<Solutions />} />
+          <Route path="/our-work"       element={<OurWork />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/cookie-policy"  element={<CookiePolicy />} />
           <Route path="/blog"           element={<Blog />} />
+          <Route path="/industries/:id"  element={<IndustryDetailPage />} />
           <Route path="*"               element={<NotFound />} />
         </Routes>
       </BrowserRouter>

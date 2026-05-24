@@ -1,20 +1,26 @@
 import { motion } from "framer-motion";
-import { Globe2, Zap } from "lucide-react";
+import { Globe2 } from "lucide-react";
 
-const markets = [
-  { flag: "🇮🇳", name: "India", desc: "Primary Engineering Hub" },
-  { flag: "🇺🇸", name: "United States", desc: "North America Clients" },
-  { flag: "🇬🇧", name: "United Kingdom", desc: "Europe Expansion" },
-  { flag: "🇦🇪", name: "United Arab Emirates", desc: "Middle East Markets" },
-  { flag: "🇸🇬", name: "Singapore", desc: "Southeast Asia" },
-  { flag: "🇨🇦", name: "Canada", desc: "North America" },
-  { flag: "🇦🇺", name: "Australia", desc: "APAC Region" },
+interface Market {
+  code: string;
+  name: string;
+  desc: string;
+}
+
+const markets: Market[] = [
+  { code: "in", name: "India", desc: "Primary Engineering Hub" },
+  { code: "us", name: "United States", desc: "North America Clients" },
+  { code: "gb", name: "United Kingdom", desc: "Europe Expansion" },
+  { code: "ae", name: "United Arab Emirates", desc: "Middle East Markets" },
+  { code: "sg", name: "Singapore", desc: "Southeast Asia" },
+  { code: "ca", name: "Canada", desc: "North America" },
+  { code: "au", name: "Australia", desc: "APAC Region" },
 ];
 
 const GlobalPresence = () => {
   return (
-    <section className="relative py-28 overflow-hidden border-t border-slate-900">
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900/30 to-slate-950" />
+    <section className="relative py-28 overflow-hidden border-t border-slate-900 bg-slate-950">
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900/10 to-slate-950" />
 
       {/* Subtle dot grid */}
       <div
@@ -25,7 +31,7 @@ const GlobalPresence = () => {
         }}
       />
 
-      <div className="container relative z-10">
+      <div className="container relative z-10 max-w-7xl mx-auto px-4">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -52,26 +58,36 @@ const GlobalPresence = () => {
         </motion.div>
 
         {/* Country Cards Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 mb-14">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-16">
           {markets.map((market, i) => (
             <motion.div
               key={market.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.07, duration: 0.5 }}
+              transition={{ delay: i * 0.05, duration: 0.5 }}
               whileHover={{ y: -4, scale: 1.02 }}
-              className="group relative bg-slate-900/60 border border-slate-800/70 hover:border-blue-500/30 rounded-2xl p-4 text-center transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/8 cursor-default"
+              className="group relative bg-slate-900/40 border border-slate-800/80 hover:border-blue-500/30 rounded-2xl p-5 text-center transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/5 cursor-default flex flex-col justify-center items-center"
             >
-              <div className="text-3xl mb-2">{market.flag}</div>
-              <p className="text-xs font-bold text-white group-hover:text-blue-100 transition-colors leading-tight">
+              {/* Premium Circular Vector Flag */}
+              <div className="w-12 h-12 rounded-full overflow-hidden border border-slate-750 bg-slate-950 flex items-center justify-center mb-4 group-hover:border-blue-500/45 group-hover:scale-110 shadow-lg transition-all duration-300 shrink-0">
+                <img 
+                  src={`https://flagcdn.com/w80/${market.code}.png`} 
+                  alt={`${market.name} Flag`} 
+                  className="w-full h-full object-cover scale-[1.05]"
+                  loading="lazy"
+                />
+              </div>
+
+              <p className="text-xs font-bold text-white group-hover:text-blue-200 transition-colors leading-tight">
                 {market.name}
               </p>
-              <p className="text-[9px] text-slate-500 mt-1 leading-tight hidden sm:block">
+              <p className="text-[10px] text-slate-500 mt-2 leading-tight hidden sm:block">
                 {market.desc}
               </p>
-              {/* Glow on hover */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
+              {/* Glowing Background Overlay */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
             </motion.div>
           ))}
         </div>
@@ -81,8 +97,8 @@ const GlobalPresence = () => {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="flex flex-wrap items-center justify-center gap-8 py-6 border-t border-b border-slate-900"
+          transition={{ delay: 0.2 }}
+          className="flex flex-wrap items-center justify-around gap-6 py-8 border-t border-b border-slate-900 bg-slate-950/20 backdrop-blur-sm"
         >
           {[
             { value: "7+", label: "Countries Served" },
@@ -90,11 +106,11 @@ const GlobalPresence = () => {
             { value: "24/7", label: "Support Available" },
             { value: "3+", label: "Years of Delivery" },
           ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="text-2xl font-black bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            <div key={stat.label} className="text-center px-4">
+              <p className="text-2xl md:text-3xl font-black bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                 {stat.value}
               </p>
-              <p className="text-xs text-slate-500 font-medium mt-0.5">{stat.label}</p>
+              <p className="text-[10px] md:text-xs text-slate-500 font-bold uppercase tracking-wider mt-1">{stat.label}</p>
             </div>
           ))}
         </motion.div>
