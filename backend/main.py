@@ -6,6 +6,28 @@ from datetime import datetime
 from pydantic import BaseModel
 from typing import Optional
 import resend
+import base64
+
+# Load .env file automatically if it exists (local development)
+def load_env():
+    for env_file in [Path(".env"), Path("../.env")]:
+        if env_file.exists():
+            try:
+                with open(env_file, "r", encoding="utf-8") as f:
+                    for line in f:
+                        line = line.strip()
+                        if not line or line.startswith("#"):
+                            continue
+                        if "=" in line:
+                            key, val = line.split("=", 1)
+                            key = key.strip()
+                            val = val.strip().strip('"').strip("'")
+                            if key:
+                                os.environ[key] = val
+            except Exception as e:
+                print(f"Error loading {env_file}: {e}")
+
+load_env()
 
 # Initialize FastAPI app
 app = FastAPI(title="KaizenSpark Careers API")
@@ -19,6 +41,7 @@ app.add_middleware(
         "http://localhost:8080",  # Current Vite dev server
         "https://kaizenspark-cooperate-1.onrender.com",  # Backend URL
         "https://kaizensparktech.com",  # Production domain
+        "https://client-ui-v1-5.vercel.app",  # Client Login Portal
     ],
     allow_origin_regex="https://.*\\.vercel\\.app",  # Matches dynamic Vercel preview branches
     allow_credentials=True,
@@ -68,9 +91,15 @@ async def submit_application(
     Handle job application submissions
     """
     try:
+        # Securely parse the filename to avoid path traversal or absolute path issues on Windows
+        raw_filename = resume.filename or "resume.pdf"
+        base_filename = os.path.basename(raw_filename)
+        # Keep only letters, numbers, dots, dashes, and underscores (no spaces)
+        clean_filename = "".join(c for c in base_filename if c.isalnum() or c in "._-").replace(" ", "_")
+
         # Validate file type
         allowed_extensions = [".pdf", ".doc", ".docx"]
-        file_ext = Path(resume.filename).suffix.lower()
+        file_ext = Path(clean_filename).suffix.lower()
         
         if file_ext not in allowed_extensions:
             raise HTTPException(
@@ -88,8 +117,8 @@ async def submit_application(
         
         # Generate unique filename
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        safe_name = name.replace(" ", "_").lower()
-        filename = f"{safe_name}_{timestamp}_{resume.filename}"
+        safe_name = "".join(c for c in name if c.isalnum() or c in "._-").lower()
+        filename = f"{safe_name}_{timestamp}_{clean_filename}"
         file_path = UPLOAD_DIR / filename
         
         # Save resume to disk
@@ -240,12 +269,24 @@ async def submit_application(
         
         # Send email notification via Resend
         try:
+            # Base64 encode the resume file to attach it to the email
+            encoded_content = base64.b64encode(resume_content).decode("utf-8")
+            
+            resend.api_key = os.getenv("CAREER_RESEND_API_KEY") or os.getenv("RESEND_API_KEY") or os.getenv("VITE_RESEND_API_KEY")
+            recipient_hr = os.getenv("VITE_RECIPIENT_EMAIL") or os.getenv("RECIPIENT_EMAIL") or "hr@kaizensparktech.com"
+            
             params = {
                 "from": RESEND_FROM_EMAIL,
-                "to": [RECIPIENT_HR_EMAIL],
+                "to": [recipient_hr],
                 "reply_to": email,
                 "subject": f"New Application: {jobTitle} - {name}",
                 "html": html_content,
+                "attachments": [
+                    {
+                        "filename": clean_filename,
+                        "content": encoded_content
+                    }
+                ]
             }
             
             email_response = resend.Emails.send(params)
@@ -323,9 +364,12 @@ async def submit_contact(form: ContactForm):
         </html>
         """
         
+        resend.api_key = os.getenv("RESEND_API_KEY") or os.getenv("VITE_RESEND_API_KEY")
+        recipient_officials = os.getenv("VITE_OFFICIALS_EMAIL") or os.getenv("RECIPIENT_OFFICIALS_EMAIL") or "officials@kaizensparktech.com"
+        
         params = {
             "from": RESEND_FROM_EMAIL,
-            "to": [RECIPIENT_OFFICIALS_EMAIL],
+            "to": [recipient_officials],
             "reply_to": form.email,
             "subject": f"New Contact Form Submission from {form.name}",
             "html": html_content,

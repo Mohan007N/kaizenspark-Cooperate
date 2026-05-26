@@ -69,20 +69,20 @@ const FounderSection = () => {
             <div className="relative bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 shadow-xl backdrop-blur-sm overflow-hidden group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
               
-              <div className="flex items-start gap-4">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
                 {/* Founder Avatar with premium ring */}
-                <div className="relative w-16 h-16 rounded-full border border-slate-700 bg-slate-950 flex items-center justify-center overflow-hidden shrink-0">
+                <div className="relative w-36 h-36 rounded-full border-2 border-slate-750 bg-slate-950 flex items-center justify-center overflow-hidden shrink-0 shadow-lg shadow-blue-500/10">
                   <img src="/sanjay_founder.png" alt="Gurubalan GT" className="w-full h-full object-cover" />
-                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border border-slate-900 rounded-full" />
+                  <span className="absolute bottom-2.5 right-2.5 w-4 h-4 bg-emerald-500 border border-slate-900 rounded-full" />
                 </div>
 
-                <div className="space-y-1">
+                <div className="space-y-2 flex-1">
                   <p className="text-xs text-slate-400 italic leading-relaxed">
                     "We treat every client's project as our own product, delivering robust infrastructure and automation built for long-term B2B success."
                   </p>
-                  <div className="pt-2 flex items-center justify-between border-t border-slate-800/80 mt-2">
-                    <div>
-                      <div className="flex items-center gap-1.5">
+                  <div className="pt-2.5 flex items-center justify-between border-t border-slate-800/80 mt-2">
+                    <div className="text-left">
+                      <div className="flex items-center gap-1.5 justify-center sm:justify-start">
                         <p className="text-xs font-bold text-white">Gurubalan GT</p>
                         <a href="https://www.linkedin.com/in/gurubalan-gt/" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-blue-400 transition-colors">
                           <Linkedin size={10} />

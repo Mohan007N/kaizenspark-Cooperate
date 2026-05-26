@@ -130,6 +130,7 @@ const Navbar = () => {
   const [servicesOpen,         setServicesOpen]         = useState(false);
   const [productsOpen,         setProductsOpen]         = useState(false);
   const [partnershipOpen,      setPartnershipOpen]      = useState(false);
+  const [contactOpen,          setContactOpen]          = useState(false);
   const [mobileServicesOpen,   setMobileServicesOpen]   = useState(false);
   const [mobileProductsOpen,   setMobileProductsOpen]   = useState(false);
   const [mobilePartnershipOpen, setMobilePartnershipOpen] = useState(false);
@@ -138,6 +139,7 @@ const Navbar = () => {
   const servicesDropdownRef   = useRef<HTMLDivElement>(null);
   const productsDropdownRef   = useRef<HTMLDivElement>(null);
   const partnershipDropdownRef = useRef<HTMLDivElement>(null);
+  const contactDropdownRef     = useRef<HTMLDivElement>(null);
 
   /* scroll listener */
   useEffect(() => {
@@ -161,6 +163,9 @@ const Navbar = () => {
       if (partnershipDropdownRef.current && !partnershipDropdownRef.current.contains(e.target as Node)) {
         setPartnershipOpen(false);
       }
+      if (contactDropdownRef.current && !contactDropdownRef.current.contains(e.target as Node)) {
+        setContactOpen(false);
+      }
     };
     document.addEventListener("mousedown", h);
     return () => document.removeEventListener("mousedown", h);
@@ -172,6 +177,7 @@ const Navbar = () => {
     setServicesOpen(false);
     setProductsOpen(false);
     setPartnershipOpen(false);
+    setContactOpen(false);
   }, [location.pathname]);
 
   const go = (path: string) => {
@@ -179,6 +185,7 @@ const Navbar = () => {
     setServicesOpen(false);
     setProductsOpen(false);
     setPartnershipOpen(false);
+    setContactOpen(false);
     navigate(path);
   };
 
@@ -687,14 +694,73 @@ const Navbar = () => {
           </nav>
 
           {/* ── Contact Pill CTA (Right) ── */}
-          <div className="hidden lg:flex items-center">
-            <button
-              onClick={() => go("/contact")}
-              className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-5 py-1.5 rounded-full text-[13px] font-semibold hover:from-blue-500 hover:to-blue-600 transition-all duration-300 flex items-center gap-1.5 shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-0.5 cursor-pointer"
-            >
-              <Mail size={13} />
-              Contact Us
-            </button>
+          <div className="hidden lg:flex items-center" ref={contactDropdownRef}>
+            <div className="relative">
+              <button
+                onClick={() => {
+                  setServicesOpen(false);
+                  setProductsOpen(false);
+                  setPartnershipOpen(false);
+                  setContactOpen(!contactOpen);
+                }}
+                className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-5 py-1.5 rounded-full text-[13px] font-semibold hover:from-blue-500 hover:to-blue-600 transition-all duration-300 flex items-center gap-1.5 shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-0.5 cursor-pointer"
+              >
+                <Mail size={13} />
+                Contact & Portal
+                <ChevronDown size={13} className={`transition-transform duration-300 ${contactOpen ? "rotate-180" : ""}`} />
+              </button>
+
+              <AnimatePresence>
+                {contactOpen && (
+                  <div className="absolute right-0 top-full mt-3.5 z-[999999]">
+                    <motion.div
+                      initial={{ opacity: 0, y: 8, scale: 0.97 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 8, scale: 0.97 }}
+                      transition={{ duration: 0.18 }}
+                      className="w-56 bg-slate-950 border border-slate-800/80 rounded-2xl shadow-2xl shadow-black/90 overflow-hidden"
+                    >
+                      <div className="px-5 py-3.5 border-b border-slate-900 bg-slate-900/10">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-blue-400">Portal & Support</p>
+                        <p className="text-[11px] text-slate-500 mt-0.5">Reach out or access portal</p>
+                      </div>
+                      <div className="p-2 space-y-1">
+                        <button
+                          onClick={() => {
+                            setContactOpen(false);
+                            go("/contact");
+                          }}
+                          className="w-full flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-blue-500/10 transition-all group text-left"
+                        >
+                          <div className="w-7 h-7 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0 group-hover:bg-blue-500/20">
+                            <Mail size={13} className="text-blue-400" />
+                          </div>
+                          <div>
+                            <p className="text-[12px] font-semibold text-slate-200 group-hover:text-white">Contact Us</p>
+                            <p className="text-[10px] text-slate-500">Send us a message</p>
+                          </div>
+                        </button>
+                        <a
+                          href="https://client-ui-v1-5.vercel.app/login"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setContactOpen(false)}
+                          className="w-full flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-purple-500/10 transition-all group text-left cursor-pointer"
+                        >
+                          <div className="w-7 h-7 rounded-lg bg-purple-500/10 flex items-center justify-center shrink-0 group-hover:bg-purple-500/20">
+                            <Laptop size={13} className="text-purple-400" />
+                          </div>
+                          <div>
+                            <p className="text-[12px] font-semibold text-slate-200 group-hover:text-white">Client Portal</p>
+                            <p className="text-[10px] text-slate-500">Client Login Dashboard</p>
+                          </div>
+                        </a>
+                      </div>
+                    </motion.div>
+                  </div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
 
           {/* Mobile Toggle Button */}
@@ -919,12 +985,21 @@ const Navbar = () => {
               </button>
             ))}
 
-            {/* Mobile Contact CTA */}
-            <div className="pt-2">
+            {/* Mobile Contact & Portal CTA */}
+            <div className="pt-2 space-y-2">
               <button onClick={() => go("/contact")}
                 className="w-full bg-blue-600 text-white py-2 rounded-full text-xs font-bold hover:bg-blue-700 transition-all flex justify-center items-center gap-1.5">
                 <Mail size={13} /> Contact Us
               </button>
+              <a
+                href="https://client-ui-v1-5.vercel.app/login"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="w-full bg-slate-900 border border-slate-800 text-slate-300 py-2 rounded-full text-xs font-bold hover:bg-slate-800 hover:text-white transition-all flex justify-center items-center gap-1.5 cursor-pointer"
+              >
+                <Laptop size={13} /> Client Portal
+              </a>
             </div>
           </nav>
         </div>
