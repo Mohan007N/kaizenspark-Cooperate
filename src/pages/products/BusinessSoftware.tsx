@@ -12,6 +12,11 @@ import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import { useToast } from "@/components/ui/use-toast";
 import { sendEmail } from "@/utils/sendEmail";
+import { 
+  BillingSoftwareSimulator, CrmSimulator, ErpSimulator, 
+  InventorySimulator, PosSimulator, AccountingSimulator 
+} from "@/components/ProductSimulators";
+import { productsData } from "@/data/productsData";
 
 const BusinessSoftware = () => {
   const navigate = useNavigate();
@@ -116,116 +121,13 @@ const BusinessSoftware = () => {
   };
 
   const stats = [
-    { num: "99.99%", label: "System Uptime", desc: "Enterprise cloud hosting redundancy" },
-    { num: "₹45Cr+", label: "Transactions Processed", desc: "Secure multi-tenant architecture" },
-    { num: "12,000+", label: "Daily Active Users", desc: "Trusted by companies globally" },
-    { num: "15 Min", label: "Average Setup Time", desc: "Zero-installation cloud onboarding" }
+    { num: "99.99%", label: "System Uptime", desc: "Enterprise-grade cloud high availability" },
+    { num: "₹45Cr+", label: "Capital Managed", desc: "Fully encrypted ledger reconciliations" },
+    { num: "12,000+", label: "Daily Operators", desc: "Actively scaling administrative bandwidth" },
+    { num: "15 Min", label: "Deployment Velocity", desc: "Zero-friction multitenant sandbox environments" }
   ];
 
-  const productsList = [
-    {
-      id: "billing-software",
-      tabKey: "billing",
-      title: "Billing Software",
-      subtitle: "High-Speed GST Invoice Generation & Ledger Posting",
-      desc: "An ultra-fast billing platform designed for retail, wholesale, and service enterprises. Includes comprehensive GST computation, automated invoice dispatching, and instant ledger entry.",
-      features: [
-        "Instant GST E-invoicing and E-way bill generation",
-        "Multiple print layouts (A4, A5, and 3-inch thermal receipts)",
-        "WhatsApp and Email automated invoice dispatch",
-        "Split payment processing (Cash, Cards, UPI, Netbanking)",
-        "Automated recurring subscription billing schemes"
-      ],
-      tech: ["React", "Node.js", "PostgreSQL", "AWS Aurora"],
-      color: "from-blue-500 to-cyan-500",
-      glow: "rgba(59,130,246,0.15)"
-    },
-    {
-      id: "custom-crm-solutions",
-      tabKey: "crm",
-      title: "Custom CRM Solutions",
-      subtitle: "Lead Scoring, Custom Pipelines, & Communication Triggers",
-      desc: "Transform how your sales force interacts with prospects. Our CRM maps custom pipelines, logs call history automatically, and uses scoring algorithms to prioritize hot opportunities.",
-      features: [
-        "Vibrant visual Kanban lead pipelines",
-        "Omnichannel inbox (WhatsApp, Email, Calls integrated)",
-        "Algorithmic lead prioritization & assignment rules",
-        "Automated follow-up triggers and reminder task lists",
-        "Detailed performance analytics for field agents"
-      ],
-      tech: ["React Native", "Express", "MongoDB", "Redis"],
-      color: "from-indigo-500 to-blue-500",
-      glow: "rgba(99,102,241,0.15)"
-    },
-    {
-      id: "erp-systems",
-      tabKey: "erp",
-      title: "ERP Systems",
-      subtitle: "Unified Resource Planning & Process Orchestration",
-      desc: "A multi-module enterprise resource planning system connecting purchase chains, manufacturing runs, HR databases, finance records, and asset logistics in one dashboard.",
-      features: [
-        "Real-time manufacturing material requirements (MRP)",
-        "Double-entry bookkeeping financial ledgers",
-        "Cross-department workflows with strict approval limits",
-        "Asset deprecation trackers and maintenance logs",
-        "Dynamic multi-entity company consolidations"
-      ],
-      tech: ["TypeScript", "NestJS", "PostgreSQL", "Docker"],
-      color: "from-purple-500 to-indigo-500",
-      glow: "rgba(168,85,247,0.15)"
-    },
-    {
-      id: "inventory-management-tools",
-      tabKey: "inventory",
-      title: "Inventory Management Tools",
-      subtitle: "Barcode Scanning, Batch Tracking, & Reorder Alerts",
-      desc: "Never run out of raw stock or overpay for warehousing. Monitor batches, trace serial numbers, scan codes on delivery, and let auto-reorder mechanisms trigger purchasing.",
-      features: [
-        "Real-time barcode scanning and generation systems",
-        "Multi-warehouse storage layout visualizers",
-        "FIFO/LIFO automated evaluation calculations",
-        "Low-stock thresholds triggering auto-purchasing orders",
-        "Perishable batch expiration date alarms"
-      ],
-      tech: ["Next.js", "GraphQL", "PostgreSQL", "AWS S3"],
-      color: "from-cyan-500 to-teal-500",
-      glow: "rgba(6,182,212,0.15)"
-    },
-    {
-      id: "point-of-sale-systems",
-      tabKey: "pos",
-      title: "Point of Sale (POS) Systems",
-      subtitle: "Offline-First Cloud Retail Transactions",
-      desc: "Robust cloud terminal POS built for high-throughput retail lanes. Operates completely offline during internet drops and synchronizes seamlessly when connection returns.",
-      features: [
-        "Offline database storage with sync engines",
-        "Fast barcode scan-to-cart interface execution",
-        "Split-second invoice generation and printing",
-        "Integrated electronic cash drawer triggering",
-        "Dual-screen customer checkout layout option"
-      ],
-      tech: ["PWA", "SQLite", "Node.js", "Electron"],
-      color: "from-amber-500 to-orange-500",
-      glow: "rgba(245,158,11,0.15)"
-    },
-    {
-      id: "accounting-software",
-      tabKey: "accounting",
-      title: "Accounting Software",
-      subtitle: "Double-Entry Bookkeeping & GST Filing Reports",
-      desc: "Simplify compliance and audit prep. Automate journal entries, compile tax reports, match bank statements automatically via secure open banking APIs, and view live P&L sheets.",
-      features: [
-        "Automated bank statement reconciliation algorithms",
-        "Instant P&L, Balance Sheet, and Cashflow reports",
-        "Tax compliance reports ready for GST filing format",
-        "Encrypted payroll calculation sheets",
-        "Audit logs capturing user-level change histories"
-      ],
-      tech: ["Vue.js", "Django", "PostgreSQL", "Kubernetes"],
-      color: "from-rose-500 to-pink-500",
-      glow: "rgba(244,63,94,0.15)"
-    }
-  ];
+  const productsList = productsData.filter(p => p.categorySlug === "business-software");
 
   const faqs = [
     {
@@ -264,19 +166,19 @@ const BusinessSoftware = () => {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-xs font-bold uppercase tracking-widest mb-6"
           >
             <Briefcase size={12} />
-            Business Software Products
+            Business Software Solutions
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6"
+            className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6 animate-pulse-subtle"
           >
-            Run Your Operations
+            Automate Your Enterprise
             <br />
             <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400 bg-clip-text text-transparent">
-              On Autopilot
+              At Infinite Scale
             </span>
           </motion.h1>
 
@@ -286,7 +188,7 @@ const BusinessSoftware = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            High-performance GST billing, custom sales-driving CRMs, complete unified ERPs, and secure dual-sync POS networks built with modern technology stacks.
+            From rapid billing databases to customized sales funnel CRMs, comprehensive MRP ERPs, and secure POS networks — we design, build, and deploy high-performance corporate operations pipelines.
           </motion.p>
 
           <motion.div
@@ -297,16 +199,16 @@ const BusinessSoftware = () => {
           >
             <a
               href="#product-showcase"
-              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-500 text-white font-bold text-sm shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-500 text-white font-bold text-sm shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer"
             >
               Explore Products
-              <ChevronRight size={14} />
+              <ChevronRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
             </a>
             <a
               href="#book-demo"
-              className="w-full sm:w-auto px-8 py-3.5 rounded-full border border-slate-800 hover:border-slate-700 bg-slate-900/50 hover:bg-slate-900 text-slate-300 hover:text-white font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full border border-slate-800 hover:border-slate-700 bg-slate-900/50 hover:bg-slate-900 text-slate-300 hover:text-white font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
             >
-              Request Custom Demo
+              Request Onboarding
             </a>
           </motion.div>
 
@@ -396,41 +298,27 @@ const BusinessSoftware = () => {
                         </span>
                       ))}
                     </div>
+
+                    <div className="mt-8 pt-6 border-t border-slate-800/40">
+                      <button 
+                        onClick={() => navigate(`/products/${product.id}`)}
+                        className="group inline-flex items-center gap-2 text-xs font-bold text-blue-400 hover:text-white transition-colors uppercase tracking-wider cursor-pointer"
+                      >
+                        Explore Dedicated Feature Page
+                        <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      </button>
+                    </div>
                   </div>
 
                   {/* Graphic Card */}
                   <div className="relative">
                     <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-indigo-500/5 rounded-2xl blur-xl" />
-                    <div className="relative border border-slate-800/80 bg-slate-950 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl">
-                      <div className="flex items-center justify-between border-b border-slate-900 pb-4 mb-6">
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 rounded-full bg-red-500/60" />
-                          <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
-                          <div className="w-3 h-3 rounded-full bg-green-500/60" />
-                        </div>
-                        <span className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">Live System Blueprint</span>
-                      </div>
-                      
-                      <div className="space-y-4 mb-8">
-                        <div className="h-6 w-2/3 bg-slate-900 rounded animate-pulse" />
-                        <div className="grid grid-cols-3 gap-2">
-                          <div className="h-10 bg-slate-900 rounded" />
-                          <div className="h-10 bg-slate-900 rounded" />
-                          <div className="h-10 bg-slate-900 rounded" />
-                        </div>
-                        <div className="h-20 bg-slate-900/60 rounded border border-slate-800/60 flex items-center justify-center">
-                          <Database size={24} className="text-blue-500/40 animate-bounce-slow" />
-                        </div>
-                      </div>
-
-                      <div className="flex justify-between items-center text-xs text-slate-500 font-semibold">
-                        <span>Cluster Status: Active</span>
-                        <span className="text-emerald-400 flex items-center gap-1.5">
-                          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                          Online
-                        </span>
-                      </div>
-                    </div>
+                    {product.id === "billing-software" && <BillingSoftwareSimulator />}
+                    {product.id === "custom-crm-solutions" && <CrmSimulator />}
+                    {product.id === "erp-systems" && <ErpSimulator />}
+                    {product.id === "inventory-management-tools" && <InventorySimulator />}
+                    {product.id === "point-of-sale-systems" && <PosSimulator />}
+                    {product.id === "accounting-software" && <AccountingSimulator />}
                   </div>
 
                 </div>

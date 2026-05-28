@@ -12,6 +12,11 @@ import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import { useToast } from "@/components/ui/use-toast";
 import { sendEmail } from "@/utils/sendEmail";
+import { 
+  HealthcareSimulator, RestaurantSimulator, RealEstateSimulator, 
+  HotelSimulator, RetailSimulator 
+} from "@/components/ProductSimulators";
+import { productsData } from "@/data/productsData";
 
 const IndustrySolutions = () => {
   const navigate = useNavigate();
@@ -78,99 +83,13 @@ const IndustrySolutions = () => {
   };
 
   const stats = [
-    { num: "320+", label: "Active Hospital Beds Managed", desc: "Real-time vitals and booking systems" },
-    { num: "₹18Cr+", label: "Restaurant Sales Processed", desc: "Speedy table KDS ordering suites" },
-    { num: "4,500+", label: "Property Units Cataloged", desc: "Fully automated realtor workflows" },
-    { num: "99.99%", label: "Cloud Node Reliability", desc: "Multi-datacenter hot backup clusters" }
+    { num: "450+", label: "Medical Centers", desc: "Secured via patient OPD/IPD medical EHR portals" },
+    { num: "1.2M+", label: "Orders Serviced", desc: "Fulfilled via high-speed restaurant kitchen desks" },
+    { num: "₹1,200Cr", label: "Capital Booked", desc: "Successfully resolved across installment ledgers" },
+    { num: "1,500+", label: "Hotel Rooms Syncing", desc: "Simultaneously coordinated via OTA Channel Managers" }
   ];
 
-  const productsList = [
-    {
-      id: "healthcare-management",
-      tabKey: "healthcare",
-      title: "Healthcare Management",
-      subtitle: "IPD/OPD Records, Pharmacy, Lab Reports & Billing",
-      desc: "An all-in-one hospital and clinic operations center. Streamline patient check-ins, compile secure electronic health records (EHR), track pharmacy inventories, and automate insurance claims.",
-      features: [
-        "Patient digital OPD/IPD registration & scheduling",
-        "Secure electronic health records compliant with DPDPA",
-        "Automated lab report generators with WhatsApp dispatch",
-        "Real-time pharmacy purchase and stock levels",
-        "Integrated multi-party insurance claim billing modules"
-      ],
-      tech: ["Next.js", "Express", "PostgreSQL", "AWS HIPAA-compliant S3"],
-      color: "from-indigo-500 to-blue-500",
-      glow: "rgba(99,102,241,0.15)"
-    },
-    {
-      id: "restaurant-management",
-      tabKey: "restaurant",
-      title: "Restaurant Management",
-      subtitle: "Kitchen Display Systems (KDS), Table Orders & QR Menu",
-      desc: "Speed up table turnovers and eliminate order errors. Visual kitchen screens (KDS), contact-free QR code menus with instant UPI payments, and detailed recipe material costing.",
-      features: [
-        "Interactive live Kitchen Display Screens (KDS)",
-        "Zero-contact QR menu table ordering and payments",
-        "Real-time raw ingredient tracking & recipe cost charts",
-        "Home-delivery aggregator API integrations (Swiggy, Zomato)",
-        "Automated multi-terminal thermal order receipt printing"
-      ],
-      tech: ["PWA", "Node.js", "MongoDB", "Socket.io"],
-      color: "from-blue-500 to-cyan-500",
-      glow: "rgba(59,130,246,0.15)"
-    },
-    {
-      id: "real-estate-solutions",
-      tabKey: "realestate",
-      title: "Real Estate Solutions",
-      subtitle: "Property Portals, Lead Trackers, & Installment Ledger",
-      desc: "Empower your sales consultants. Maintain beautiful visual property catalogs, monitor buyer visits, structure complex payment schemes, and track due dates automatically.",
-      features: [
-        "Visual property catalog filters and high-quality galleries",
-        "Automated buyer installment schedule trackers",
-        "Lead scoring metrics synced with WhatsApp API",
-        "Secure digital tenancy and sale agreement signing templates",
-        "Commission metrics dashboard for field agents"
-      ],
-      tech: ["Next.js", "NestJS", "PostgreSQL", "AWS S3"],
-      color: "from-cyan-500 to-teal-500",
-      glow: "rgba(6,182,212,0.15)"
-    },
-    {
-      id: "hotel-management",
-      tabKey: "hotel",
-      title: "Hotel Management",
-      subtitle: "Room Reservation Grids, Housekeeping, & POS Dining",
-      desc: "Take full command of your property. Drag-and-drop room reservation calendars, real-time housekeeping checklists, check-in passport scanners, and POS billing.",
-      features: [
-        "Vibrant drag-and-drop room booking schedule grids",
-        "Housekeeping team chore dispatch mobile apps",
-        "Split-second passport scanner check-in data parsers",
-        "Room service order modules connected to main billing",
-        "Channel manager sync with popular OTAs (MakeMyTrip, Booking)"
-      ],
-      tech: ["React Native", "Django", "PostgreSQL", "Redis"],
-      color: "from-teal-500 to-emerald-500",
-      glow: "rgba(20,184,166,0.15)"
-    },
-    {
-      id: "retail-management",
-      tabKey: "retail",
-      title: "Retail Management",
-      subtitle: "Multi-Branch Stock Sync, Purchase Orders, & CRM Audits",
-      desc: "Scale your retail chain with absolute confidence. Centralized multi-branch inventory tracking, automatic transfer orders, purchase templates, and loyalty reward schemes.",
-      features: [
-        "Multi-store stock transfers and dispatch tracking",
-        "Automated purchase order generators with supplier approvals",
-        "Point-system loyalty customer databases",
-        "Bulk inventory CSV stock adjustment sheets",
-        "Consolidated daily sales and profit margin reports"
-      ],
-      tech: ["React", "Express", "MongoDB", "Kubernetes"],
-      color: "from-amber-500 to-orange-500",
-      glow: "rgba(245,158,11,0.15)"
-    }
-  ];
+  const productsList = productsData.filter(p => p.categorySlug === "industry-solutions");
 
   const faqs = [
     {
@@ -205,19 +124,19 @@ const IndustrySolutions = () => {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-400 text-xs font-bold uppercase tracking-widest mb-6"
           >
             <Building2 size={12} />
-            Industry Specific Products
+            Industry Specific Solutions
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6"
+            className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6 animate-pulse-subtle"
           >
-            Purpose-Built
+            Purpose-Built Operations
             <br />
             <span className="bg-gradient-to-r from-indigo-400 via-blue-300 to-cyan-400 bg-clip-text text-transparent">
-              Industry Operations
+              For Targeted Verticals
             </span>
           </motion.h1>
 
@@ -227,7 +146,7 @@ const IndustrySolutions = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            Streamlined hospital portals, high-throughput restaurant KDS, visual real estate installment trackers, and multi-branch retail supply chains.
+            From secure HIPAA-compliant hospital clinics to high-throughput restaurant kitchen hubs, automated real estate installment matrices, and multi-channel hotel OTA managers.
           </motion.p>
 
           <motion.div
@@ -238,14 +157,14 @@ const IndustrySolutions = () => {
           >
             <a
               href="#product-showcase"
-              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-indigo-600 to-blue-500 text-white font-bold text-sm shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/30 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-indigo-600 to-blue-500 text-white font-bold text-sm shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/30 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer"
             >
-              Explore Solutions
-              <ChevronRight size={14} />
+              Explore Industry Solutions
+              <ChevronRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
             </a>
             <a
               href="#book-demo"
-              className="w-full sm:w-auto px-8 py-3.5 rounded-full border border-slate-800 hover:border-slate-700 bg-slate-900/50 hover:bg-slate-900 text-slate-300 hover:text-white font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full border border-slate-800 hover:border-slate-700 bg-slate-900/50 hover:bg-slate-900 text-slate-300 hover:text-white font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
             >
               Consult an Architect
             </a>
@@ -337,40 +256,26 @@ const IndustrySolutions = () => {
                         </span>
                       ))}
                     </div>
+
+                    <div className="mt-8 pt-6 border-t border-slate-800/40">
+                      <button 
+                        onClick={() => navigate(`/products/${product.id}`)}
+                        className="group inline-flex items-center gap-2 text-xs font-bold text-indigo-400 hover:text-white transition-colors uppercase tracking-wider cursor-pointer"
+                      >
+                        Explore Dedicated Feature Page
+                        <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      </button>
+                    </div>
                   </div>
 
                   {/* Graphic Card */}
                   <div className="relative">
                     <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/10 to-blue-500/5 rounded-2xl blur-xl" />
-                    <div className="relative border border-slate-800/80 bg-slate-950 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl">
-                      <div className="flex items-center justify-between border-b border-slate-900 pb-4 mb-6">
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 rounded-full bg-red-500/60" />
-                          <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
-                          <div className="w-3 h-3 rounded-full bg-green-500/60" />
-                        </div>
-                        <span className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">Industry Node Blueprint</span>
-                      </div>
-                      
-                      <div className="space-y-4 mb-8">
-                        <div className="h-6 w-1/3 bg-slate-900 rounded animate-pulse" />
-                        <div className="grid grid-cols-2 gap-2">
-                          <div className="h-10 bg-slate-900 rounded animate-pulse" />
-                          <div className="h-10 bg-slate-900 rounded animate-pulse" />
-                        </div>
-                        <div className="h-20 bg-slate-900/60 rounded border border-slate-800/60 flex items-center justify-center">
-                          <Building size={24} className="text-indigo-500/40" />
-                        </div>
-                      </div>
-
-                      <div className="flex justify-between items-center text-xs text-slate-500 font-semibold">
-                        <span>Database Node: Active</span>
-                        <span className="text-emerald-400 flex items-center gap-1.5">
-                          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                          Healthy
-                        </span>
-                      </div>
-                    </div>
+                    {product.id === "healthcare-management" && <HealthcareSimulator />}
+                    {product.id === "restaurant-management" && <RestaurantSimulator />}
+                    {product.id === "real-estate-solutions" && <RealEstateSimulator />}
+                    {product.id === "hotel-management" && <HotelSimulator />}
+                    {product.id === "retail-management" && <RetailSimulator />}
                   </div>
 
                 </div>

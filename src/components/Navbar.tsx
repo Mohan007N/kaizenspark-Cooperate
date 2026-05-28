@@ -241,22 +241,20 @@ const Navbar = () => {
     setMobileOpen(false);
     setProductsOpen(false);
     
-    const isBusiness = productsMegaMenu.business.items.includes(item);
-    const isEducation = productsMegaMenu.education.items.includes(item);
-    const isIndustry = productsMegaMenu.industry.items.includes(item);
-    const isAutomation = productsMegaMenu.automation.items.includes(item);
+    const getProductSlug = (name: string): string => {
+      const clean = name.toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, "")
+        .trim()
+        .replace(/\s+/g, "-");
+      
+      if (clean === "learning-management-systems-lms") {
+        return "learning-management-systems-lms-";
+      }
+      return clean;
+    };
 
-    if (isBusiness) {
-      navigate("/products/business-software");
-    } else if (isEducation) {
-      navigate("/products/education");
-    } else if (isIndustry) {
-      navigate("/products/industry-solutions");
-    } else if (isAutomation) {
-      navigate("/products/ai-automation");
-    } else {
-      navigate("/products/business-software");
-    }
+    const slug = getProductSlug(item);
+    navigate(`/products/${slug}`);
   };
 
   const isServicesActive   = location.pathname === "/services" || location.pathname.startsWith("/services");

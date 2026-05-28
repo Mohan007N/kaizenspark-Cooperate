@@ -29,6 +29,7 @@ import CookieConsent  from "./components/CookieConsent";
 import Blog           from "./pages/Blog";
 import OurWork        from "./pages/OurWork";
 import IndustryDetailPage from "./pages/IndustryDetailPage";
+import ProductDetailPage from "./pages/products/ProductDetailPage";
 
 const queryClient = new QueryClient();
 
@@ -66,6 +67,7 @@ const App = () => (
           <Route path="/cookie-policy"  element={<CookiePolicy />} />
           <Route path="/blog"           element={<Blog />} />
           <Route path="/industries/:id"  element={<IndustryDetailPage />} />
+          <Route path="/products/:productId" element={<ProductDetailPage />} />
           <Route path="*"               element={<NotFound />} />
         </Routes>
       </BrowserRouter>

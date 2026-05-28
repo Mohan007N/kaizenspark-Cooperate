@@ -12,6 +12,11 @@ import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import { useToast } from "@/components/ui/use-toast";
 import { sendEmail } from "@/utils/sendEmail";
+import { 
+  LmsSimulator, SchoolManagementSimulator, ExamSimulator, 
+  LibrarySimulator, StudentPortalSimulator 
+} from "@/components/ProductSimulators";
+import { productsData } from "@/data/productsData";
 
 const Education = () => {
   const navigate = useNavigate();
@@ -78,99 +83,13 @@ const Education = () => {
   };
 
   const stats = [
-    { num: "50,000+", label: "Active Students Enrolled", desc: "Integrated educational networks" },
-    { num: "3.2 Million", label: "Mock Exams Evaluated", desc: "Instantly graded test suites" },
-    { num: "₹0", label: "Paper Cost Waste", desc: "Fully green, digital operations" },
-    { num: "450+", label: "Schools & Academies", desc: "Trusted cloud learning suites" }
+    { num: "1.2M+", label: "Active Scholars", desc: "Enrolled across global digital portals" },
+    { num: "99.9%", label: "Platform Stability", desc: "Redundant multi-region streaming nodes" },
+    { num: "4.8/5", label: "Satisfaction Rating", desc: "Voted by institutional faculty committees" },
+    { num: "24 Hours", label: "Deployment Time", desc: "Instant digital campus tenant creations" }
   ];
 
-  const productsList = [
-    {
-      id: "learning-management-systems-lms-",
-      tabKey: "lms",
-      title: "Learning Management Systems (LMS)",
-      subtitle: "Multimedia Courses, Gradebooks, & Video Classes",
-      desc: "Empower teachers and inspire students. Create interactive video lessons, compile online quiz metrics, monitor attendance, and sync student progression matrices.",
-      features: [
-        "Dynamic course builders with drag-and-drop file support",
-        "Encrypted live stream classes with whiteboard interactions",
-        "Grading systems with detailed rubric charts",
-        "Automatic assignment similarity detectors",
-        "Interactive gamified student certificates"
-      ],
-      tech: ["Next.js", "Express", "Node.js", "AWS Medialive"],
-      color: "from-cyan-500 to-blue-500",
-      glow: "rgba(6,182,212,0.15)"
-    },
-    {
-      id: "school-management-software",
-      tabKey: "school",
-      title: "School Management Software",
-      subtitle: "Fee Collections, Transport GPS, & Staff HR",
-      desc: "The nerve center for modern schools. Oversee admissions, automate fee collections with visual reminders, dispatch GPS transport feeds, and manage faculty salary structures.",
-      features: [
-        "Automated visual payment links with reminder alerts",
-        "Real-time GPS bus layout positioning map trackers",
-        "Staff daily bio-metric and face attendance tools",
-        "Automated student report card compiler engines",
-        "Comprehensive inventory lists for class equipment"
-      ],
-      tech: ["React Native", "Django", "PostgreSQL", "Google Maps API"],
-      color: "from-blue-500 to-indigo-500",
-      glow: "rgba(59,130,246,0.15)"
-    },
-    {
-      id: "online-examination-systems",
-      tabKey: "exams",
-      title: "Online Examination Systems",
-      subtitle: "AI Proctoring, Dynamic Tests, & Instant Scoring",
-      desc: "Eliminate examination malpractice. Secure testing browser lockers, AI gaze-tracking proctors, random question engines, and split-second test scoring sheets.",
-      features: [
-        "AI proctor gaze-tracking and background noise detectors",
-        "Locked fullscreen browser window operations",
-        "Dynamic question pools shuffling algorithms",
-        "Instant score compilation & automated reports",
-        "Diverse test setups (MCQs, subjective, and oral tests)"
-      ],
-      tech: ["React", "Flask", "Python AI Models", "MongoDB"],
-      color: "from-indigo-500 to-purple-500",
-      glow: "rgba(99,102,241,0.15)"
-    },
-    {
-      id: "e-library-solutions",
-      tabKey: "library",
-      title: "E-Library Solutions",
-      subtitle: "Digital Cataloging, Barcodes, & PDF Readers",
-      desc: "Bring books online. Allow students to browse directories, download secure DRM-encrypted PDFs, reserve physically, and track return dates with visual warnings.",
-      features: [
-        "Highly-organized catalog searches by authors & categories",
-        "Strict DRM PDF readers preventing copy operations",
-        "Integrated checkout barcode barcode scanning systems",
-        "Automated fee/fine alerts for late book returns",
-        "Interactive virtual student reading group forums"
-      ],
-      tech: ["Next.js", "NestJS", "PostgreSQL", "AWS S3 DRM"],
-      color: "from-purple-500 to-pink-500",
-      glow: "rgba(168,85,247,0.15)"
-    },
-    {
-      id: "student-portal-systems",
-      tabKey: "portal",
-      title: "Student Portal Systems",
-      subtitle: "Personal Dashboards, Calendars, & Helpdesks",
-      desc: "One central hub for student life. Access class calendars, file support requests, download academic transcripts, view schedules, and collaborate with peers.",
-      features: [
-        "Personal dashboards showcasing active schedules",
-        "Instant transcript download options",
-        "Student digital identity card verification badges",
-        "Helpdesk panels resolving registration issues",
-        "Class collaboration forums & document sharing"
-      ],
-      tech: ["React", "Express", "PostgreSQL", "Redis"],
-      color: "from-pink-500 to-rose-500",
-      glow: "rgba(236,72,153,0.15)"
-    }
-  ];
+  const productsList = productsData.filter(p => p.categorySlug === "education");
 
   const faqs = [
     {
@@ -205,19 +124,19 @@ const Education = () => {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-bold uppercase tracking-widest mb-6"
           >
             <GraduationCap size={12} />
-            Academic & Education Products
+            Education & E-Learning Solutions
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6"
+            className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6 animate-pulse-subtle"
           >
-            Empower Teachers.
+            Architect Academic Systems
             <br />
             <span className="bg-gradient-to-r from-cyan-400 via-blue-300 to-indigo-400 bg-clip-text text-transparent">
-              Inspire Students.
+              That Shape the Future
             </span>
           </motion.h1>
 
@@ -227,7 +146,7 @@ const Education = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            High-fidelity Learning Management Systems, School Management utilities, secure AI proctored online examinations, and tokenized DRM E-libraries.
+            From interactive SCORM-compliant courses to secure eye-tracking proctor exams and HLS media hubs — we engineer modern institutional architectures that unlock digital classrooms at scale.
           </motion.p>
 
           <motion.div
@@ -238,16 +157,16 @@ const Education = () => {
           >
             <a
               href="#product-showcase"
-              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-cyan-600 to-blue-500 text-white font-bold text-sm shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/30 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-cyan-600 to-blue-500 text-white font-bold text-sm shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/30 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer"
             >
-              Explore Educational Products
-              <ChevronRight size={14} />
+              Explore Academic Systems
+              <ChevronRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
             </a>
             <a
               href="#book-demo"
-              className="w-full sm:w-auto px-8 py-3.5 rounded-full border border-slate-800 hover:border-slate-700 bg-slate-900/50 hover:bg-slate-900 text-slate-300 hover:text-white font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full border border-slate-800 hover:border-slate-700 bg-slate-900/50 hover:bg-slate-900 text-slate-300 hover:text-white font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
             >
-              Request Free Trial
+              Request Trial Workspace
             </a>
           </motion.div>
 
@@ -337,40 +256,26 @@ const Education = () => {
                         </span>
                       ))}
                     </div>
+
+                    <div className="mt-8 pt-6 border-t border-slate-800/40">
+                      <button 
+                        onClick={() => navigate(`/products/${product.id}`)}
+                        className="group inline-flex items-center gap-2 text-xs font-bold text-cyan-400 hover:text-white transition-colors uppercase tracking-wider cursor-pointer"
+                      >
+                        Explore Dedicated Feature Page
+                        <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      </button>
+                    </div>
                   </div>
 
                   {/* Graphic Card */}
                   <div className="relative">
                     <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-blue-500/5 rounded-2xl blur-xl" />
-                    <div className="relative border border-slate-800/80 bg-slate-950 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl">
-                      <div className="flex items-center justify-between border-b border-slate-900 pb-4 mb-6">
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 rounded-full bg-red-500/60" />
-                          <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
-                          <div className="w-3 h-3 rounded-full bg-green-500/60" />
-                        </div>
-                        <span className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">School Dashboard Mockup</span>
-                      </div>
-                      
-                      <div className="space-y-4 mb-8">
-                        <div className="h-6 w-1/2 bg-slate-900 rounded animate-pulse" />
-                        <div className="grid grid-cols-2 gap-2">
-                          <div className="h-12 bg-slate-900 rounded" />
-                          <div className="h-12 bg-slate-900 rounded" />
-                        </div>
-                        <div className="h-20 bg-slate-900/60 rounded border border-slate-800/60 flex items-center justify-center">
-                          <BookOpen size={24} className="text-cyan-500/40" />
-                        </div>
-                      </div>
-
-                      <div className="flex justify-between items-center text-xs text-slate-500 font-semibold">
-                        <span>Institution Sync: Encrypted</span>
-                        <span className="text-emerald-400 flex items-center gap-1.5">
-                          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                          Connected
-                        </span>
-                      </div>
-                    </div>
+                    {product.id === "learning-management-systems-lms-" && <LmsSimulator />}
+                    {product.id === "school-management-software" && <SchoolManagementSimulator />}
+                    {product.id === "online-examination-systems" && <ExamSimulator />}
+                    {product.id === "e-library-solutions" && <LibrarySimulator />}
+                    {product.id === "student-portal-systems" && <StudentPortalSimulator />}
                   </div>
 
                 </div>

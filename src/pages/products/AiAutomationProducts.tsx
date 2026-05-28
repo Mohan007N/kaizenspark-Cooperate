@@ -12,6 +12,11 @@ import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import { useToast } from "@/components/ui/use-toast";
 import { sendEmail } from "@/utils/sendEmail";
+import { 
+  ChatbotSimulator, BpaSimulator, AnalyticsSimulator, 
+  OcrSimulator, WorkflowSimulator 
+} from "@/components/ProductSimulators";
+import { productsData } from "@/data/productsData";
 
 const AiAutomationProducts = () => {
   const navigate = useNavigate();
@@ -78,99 +83,13 @@ const AiAutomationProducts = () => {
   };
 
   const stats = [
-    { num: "75%", label: "Manual Overhead Reduced", desc: "For typical back-office operations" },
-    { num: "80,000+", label: "Daily Chatbot Queries", desc: "Automated at zero latency" },
-    { num: "2 Min", label: "Average Setup Speed", desc: "Connect directories and start instantly" },
-    { num: "₹12L+", label: "Average Saved Annually", desc: "Per integrated client workflow" }
+    { num: "98.7%", label: "OCR Model Precision", desc: "Trained across multi-format structured templates" },
+    { num: "5M+", label: "Automations / Day", desc: "Processed across scalable BullMQ server queues" },
+    { num: "₹180Cr+", label: "Operational Yield", desc: "Consolidated corporate manual entry pipelines" },
+    { num: "320ms", label: "Inference Latency", desc: "Resolved using hyper-optimized Pinecone queries" }
   ];
 
-  const productsList = [
-    {
-      id: "ai-chatbot-solutions",
-      tabKey: "chatbots",
-      title: "AI Chatbot Solutions",
-      subtitle: "Conversational Agents, WhatsApp Sync, & CRM Handoffs",
-      desc: "Deploy intelligent customer support agents trained on your documentation. Resolves questions, captures leads, and hands off to humans in real-time.",
-      features: [
-        "Interactive LLM training on custom PDF/Web documentation",
-        "Multi-channel deployments (WhatsApp, Web, Slack, Telegram)",
-        "Omnichannel custom CRM lead sync pipelines",
-        "Intelligent human handoff conditions & indicators",
-        "Detailed conversation metrics and visual analysis"
-      ],
-      tech: ["Next.js", "Python", "LangChain", "Pinecone"],
-      color: "from-purple-500 to-indigo-500",
-      glow: "rgba(168,85,247,0.15)"
-    },
-    {
-      id: "business-process-automation",
-      tabKey: "process",
-      title: "Business Process Automation",
-      subtitle: "Multi-system Sync, Scheduled Tasks & Flow Planners",
-      desc: "Synchronize back-office operations. Connect separate applications, schedule complex recurring runs, and automate manual file moving processes.",
-      features: [
-        "Visual drag-and-drop workflow planner grids",
-        "Omnichannel custom REST and GraphQL webhook triggers",
-        "Scheduled execution nodes with robust retry rules",
-        "Advanced error reporting with instant Slack alerts",
-        "Multi-tenant data isolation and protection keys"
-      ],
-      tech: ["React", "Express", "Node.js", "Redis"],
-      color: "from-indigo-500 to-blue-500",
-      glow: "rgba(99,102,241,0.15)"
-    },
-    {
-      id: "data-analytics-platforms",
-      tabKey: "analytics",
-      title: "Data Analytics Platforms",
-      subtitle: "Real-time Metrics, Custom Charts & AI Insights",
-      desc: "Convert complex raw rows into stunning business charts. Automatically extract performance trends, score leads, and forecast supply demands.",
-      features: [
-        "Real-time visual data graphs & drag-and-drop metrics",
-        "Algorithmic forecasting models (Prophet, Scikit-learn)",
-        "Custom SQL builder engines with visual UI grids",
-        "Automated scheduled PDF report generator sheets",
-        "Instant multi-role dashboard user permissions"
-      ],
-      tech: ["Next.js", "Django", "PostgreSQL", "BigQuery"],
-      color: "from-blue-500 to-cyan-500",
-      glow: "rgba(59,130,246,0.15)"
-    },
-    {
-      id: "document-management",
-      tabKey: "documents",
-      title: "Document Management",
-      subtitle: "AI OCR Parsing, Secure Cataloging, & Auto Tags",
-      desc: "Transform scanning files. Automatically read physical invoices, parse purchase sheets, index keywords, and catalog documents securely.",
-      features: [
-        "High-performance AI OCR document data extraction",
-        "Automated smart category tags allocation rules",
-        "Encrypted multi-tenant cloud storage structures",
-        "Keywords parsing index search algorithms",
-        "Complimentary compliance audit checks (GDPR)"
-      ],
-      tech: ["React", "NestJS", "Python OCR", "AWS Textract"],
-      color: "from-cyan-500 to-teal-500",
-      glow: "rgba(6,182,212,0.15)"
-    },
-    {
-      id: "workflow-automation-tools",
-      tabKey: "workflow",
-      title: "Workflow Automation Tools",
-      subtitle: "Visual Builders, Webhook Triggers, & Integrations",
-      desc: "Link your favorite modern work tools. Automate Slack notices, format spreadsheet rows, trigger database updates, and dispatch files instantly.",
-      features: [
-        "Integrated popular API tokens (n8n, Zapier, Make)",
-        "Instant REST webhook custom listener modules",
-        "Vibrant visual drag-and-drop execution planners",
-        "Conditional filter nodes with JavaScript formatting",
-        "Bulk records multi-threaded queue managers"
-      ],
-      tech: ["Vue.js", "Express", "PostgreSQL", "Docker"],
-      color: "from-pink-500 to-rose-500",
-      glow: "rgba(236,72,153,0.15)"
-    }
-  ];
+  const productsList = productsData.filter(p => p.categorySlug === "ai-automation");
 
   const faqs = [
     {
@@ -205,19 +124,19 @@ const AiAutomationProducts = () => {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-xs font-bold uppercase tracking-widest mb-6"
           >
             <Cpu size={12} />
-            AI & Automation Products
+            AI & Process Automation Solutions
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6"
+            className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6 animate-pulse-subtle"
           >
-            Smarter Operations
+            Deploy Intelligent Agents
             <br />
             <span className="bg-gradient-to-r from-purple-400 via-indigo-300 to-cyan-400 bg-clip-text text-transparent">
-              Driven by AI
+              At Production Scale
             </span>
           </motion.h1>
 
@@ -227,7 +146,7 @@ const AiAutomationProducts = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            Trained conversational chatbot agents, visual scheduled process planners, real-time demand forecasting charts, and high-performance AI OCR parser models.
+            From retrieval-augmented vector chatbots to visual scheduled process builders, predictive analytics forecasts, and compliant OpenCV OCR text classification engines.
           </motion.p>
 
           <motion.div
@@ -238,16 +157,16 @@ const AiAutomationProducts = () => {
           >
             <a
               href="#product-showcase"
-              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-purple-600 to-indigo-500 text-white font-bold text-sm shadow-lg shadow-purple-500/20 hover:shadow-purple-500/30 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-purple-600 to-indigo-500 text-white font-bold text-sm shadow-lg shadow-purple-500/20 hover:shadow-purple-500/30 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer"
             >
               Explore AI Products
-              <ChevronRight size={14} />
+              <ChevronRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
             </a>
             <a
               href="#book-demo"
-              className="w-full sm:w-auto px-8 py-3.5 rounded-full border border-slate-800 hover:border-slate-700 bg-slate-900/50 hover:bg-slate-900 text-slate-300 hover:text-white font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full border border-slate-800 hover:border-slate-700 bg-slate-900/50 hover:bg-slate-900 text-slate-300 hover:text-white font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
             >
-              Request API Access
+              Request API Tokens
             </a>
           </motion.div>
 
@@ -337,40 +256,26 @@ const AiAutomationProducts = () => {
                         </span>
                       ))}
                     </div>
+
+                    <div className="mt-8 pt-6 border-t border-slate-800/40">
+                      <button 
+                        onClick={() => navigate(`/products/${product.id}`)}
+                        className="group inline-flex items-center gap-2 text-xs font-bold text-purple-400 hover:text-white transition-colors uppercase tracking-wider cursor-pointer"
+                      >
+                        Explore Dedicated Feature Page
+                        <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      </button>
+                    </div>
                   </div>
 
                   {/* Graphic Card */}
                   <div className="relative">
                     <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 to-indigo-500/5 rounded-2xl blur-xl" />
-                    <div className="relative border border-slate-800/80 bg-slate-950 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl">
-                      <div className="flex items-center justify-between border-b border-slate-900 pb-4 mb-6">
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 rounded-full bg-red-500/60" />
-                          <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
-                          <div className="w-3 h-3 rounded-full bg-green-500/60" />
-                        </div>
-                        <span className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">AI Node Visualizer</span>
-                      </div>
-                      
-                      <div className="space-y-4 mb-8">
-                        <div className="h-6 w-1/3 bg-slate-900 rounded animate-pulse" />
-                        <div className="grid grid-cols-2 gap-2">
-                          <div className="h-10 bg-slate-900 rounded animate-pulse" />
-                          <div className="h-10 bg-slate-900 rounded animate-pulse" />
-                        </div>
-                        <div className="h-20 bg-slate-900/60 rounded border border-slate-800/60 flex items-center justify-center">
-                          <Bot size={24} className="text-purple-500/40" />
-                        </div>
-                      </div>
-
-                      <div className="flex justify-between items-center text-xs text-slate-500 font-semibold">
-                        <span>Cognitive Model: Online</span>
-                        <span className="text-emerald-400 flex items-center gap-1.5">
-                          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                          Trained
-                        </span>
-                      </div>
-                    </div>
+                    {product.id === "ai-chatbot-solutions" && <ChatbotSimulator />}
+                    {product.id === "business-process-automation" && <BpaSimulator />}
+                    {product.id === "data-analytics-platforms" && <AnalyticsSimulator />}
+                    {product.id === "document-management" && <OcrSimulator />}
+                    {product.id === "workflow-automation-tools" && <WorkflowSimulator />}
                   </div>
 
                 </div>
