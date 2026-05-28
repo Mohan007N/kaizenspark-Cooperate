@@ -167,7 +167,7 @@ const About = () => {
               transition={{ delay: 0.45, duration: 0.8 }}
               className="text-slate-400 text-base md:text-lg leading-relaxed mb-10 max-w-lg"
             >
-              KaizenSpark Tech is an elite software engineering company specializing in high-performance cloud infrastructure, advanced AI automation, and secure enterprise systems. We partner with scaling organizations to architect reliable, secure, and highly efficient technical systems.
+              KaizenSpark Tech Pvt. Ltd. is a future-ready technology services and innovation company based in Chennai, India — specializing in end-to-end tech solutions, automation systems, SaaS products, and internship platforms built for impact, execution, and scale.
             </motion.p>
 
             <motion.div
@@ -322,6 +322,7 @@ const About = () => {
         </div>
       </section>
 
+
       {/* ── CAREERS CTA — below hero ─────────────────────────────────────── */}
       <section className="relative py-20 overflow-hidden border-t border-slate-900 bg-slate-950">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-blue-500/8 rounded-full blur-3xl pointer-events-none" />
@@ -429,13 +430,28 @@ const About = () => {
                 </div>
                 <h3 className="text-2xl font-extrabold text-white mb-4">Our Mission</h3>
                 <p className="text-slate-400 leading-relaxed max-w-2xl mx-auto text-base">
-                  At KaizenSpark Tech, our mission is to harness the power of technology to solve complex challenges and unlock new opportunities for our clients. We believe in pushing the boundaries of innovation and leveraging the latest advancements in technology to create value-driven solutions that drive growth, efficiency, and success.
+                  To engineer powerful, scalable, and intelligent digital systems that automate complexity, accelerate business growth, and equip startups and enterprises to lead in the digital era.
                 </p>
 
+                <div className="mt-6 grid sm:grid-cols-2 gap-4 text-left">
+                  <div className="bg-slate-900/60 border border-slate-800/60 rounded-xl p-5">
+                    <p className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-2">Mission 01</p>
+                    <p className="text-slate-300 text-sm leading-relaxed">
+                      Engineer powerful, scalable, and intelligent digital systems that automate complexity, accelerate business growth, and equip startups and enterprises to lead in the digital era.
+                    </p>
+                  </div>
+                  <div className="bg-slate-900/60 border border-slate-800/60 rounded-xl p-5">
+                    <p className="text-[10px] font-black text-cyan-400 uppercase tracking-widest mb-2">Mission 02</p>
+                    <p className="text-slate-300 text-sm leading-relaxed">
+                      Replace outdated learning with hands-on, real-world experience — delivering verified internships, practical skill-building, and purpose-driven programs that prepare students for today's competitive world.
+                    </p>
+                  </div>
+                </div>
+
                 <div className="mt-8 border-t border-slate-800/60 pt-8">
-                  <h4 className="text-lg font-bold text-white mb-3">Our Approach</h4>
+                  <h4 className="text-lg font-bold text-white mb-3">Our Core Strength</h4>
                   <p className="text-slate-400 leading-relaxed max-w-2xl mx-auto text-base">
-                    We adopt a collaborative and customer-centric approach to every project, working closely with our clients to understand their unique needs and challenges. Our team of skilled professionals combines technical expertise with creative thinking to deliver tailored solutions that exceed expectations and deliver tangible results.
+                    Blending technology, automation, and learning into high-performance platforms — all rooted in the philosophy of Kaizen (continuous improvement) and the vision to empower India's next generation of innovators.
                   </p>
                 </div>
               </motion.div>
