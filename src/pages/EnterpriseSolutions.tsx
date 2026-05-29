@@ -116,7 +116,7 @@ const EnterpriseSolutions = () => {
 
   const stats = [
     { number: "99.99%", label: "Uptime SLA", desc: "Enterprise-grade reliability" },
-    { number: "50+", label: "Enterprise Clients", desc: "Scale solutions served globally" },
+    { number: "70+", label: "Enterprise Clients", desc: "Scale solutions served globally" },
     { number: "4hr", label: "Critical Issue Response", desc: "Dedicated emergency support" },
     { number: "30%", label: "Avg. Cloud Cost Reduction", desc: "Right-sizing optimization" }
   ];

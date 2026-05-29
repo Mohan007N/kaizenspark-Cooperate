@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, Code2, Linkedin, Building2, GraduationCap, Cpu, Sparkles } from "lucide-react";
+import { ArrowRight, CheckCircle2, Code2, Linkedin, Building2, GraduationCap, Cpu, Sparkles, Quote } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const pillars = [
@@ -42,7 +42,7 @@ const pillars = [
 ];
 
 const stats = [
-  { val: "30+", label: "Clients Served" },
+  { val: "70+", label: "Clients Served" },
   { val: "3",   label: "Core Verticals" },
   { val: "100%",label: "Satisfaction"   },
 ];
@@ -130,13 +130,36 @@ const FounderSection = () => {
               </div>
             </div>
 
-            {/* Quote */}
-            <blockquote className="border-l-2 border-blue-500/50 pl-4">
-              <p className="text-slate-400 text-[12px] leading-relaxed italic">
-                "Execution beats ideas. We don't just serve clients — we solve, simplify, and scale."
-              </p>
-              <footer className="mt-2 text-[10px] text-slate-600 font-semibold">— Gurubalan G.T</footer>
-            </blockquote>
+            {/* Quote Card */}
+            <div className="relative overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/30 p-5 shadow-md group/quote hover:border-blue-500/20 transition-all duration-300">
+              {/* Background gradient graphics */}
+              <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-xl pointer-events-none transition-all duration-500 group-hover/quote:bg-blue-500/10" />
+              
+              {/* Decorative Quote Mark Watermark */}
+              <Quote 
+                size={72} 
+                className="absolute -right-2 -bottom-2 text-slate-800/10 stroke-[1] select-none pointer-events-none group-hover/quote:text-blue-500/5 group-hover/quote:scale-105 transition-all duration-500" 
+              />
+              
+              <div className="relative z-10 flex items-start gap-3.5">
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-500/10 to-cyan-500/5 border border-blue-500/20 flex items-center justify-center text-blue-400 shadow-sm shrink-0">
+                  <Quote size={13} className="stroke-[2.5]" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-slate-300 text-[12.5px] leading-relaxed font-semibold tracking-wide italic">
+                    “Execution beats ideas. We solve, simplify, and scale.”
+                  </p>
+                  
+                  <div className="mt-3.5 flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                    <span className="text-[10px] text-slate-400 font-extrabold uppercase tracking-[0.15em] bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                      Gurubalan G.T
+                    </span>
+                    <span className="text-[9px] text-slate-500 font-medium">| Founder & CEO</span>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             {/* Stats */}
             <div className="flex gap-6 pt-1 border-t border-slate-800/50">

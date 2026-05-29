@@ -98,7 +98,7 @@ const SolutionsHero = () => {
         >
           {[
             { value: "2011", label: "Corporate IT Integrator Since" },
-            { value: "50+", label: "Enterprise Clients" },
+            { value: "70+", label: "Enterprise Clients" },
             { value: "99.9%", label: "Uptime Target" },
             { value: "24/7", label: "Monitoring & Support" },
           ].map((stat) => (

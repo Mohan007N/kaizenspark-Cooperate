@@ -345,8 +345,8 @@ const IndustryDetailPage = () => {
                   <Sparkles size={11} />
                   Realized Impact Case Study
                 </h4>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
-                  "{data.caseStudy}"
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium italic">
+                  “{data.caseStudy}”
                 </p>
               </div>
             </div>

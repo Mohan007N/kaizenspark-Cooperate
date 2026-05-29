@@ -1,46 +1,46 @@
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "KaizenSpark Tech delivered our entire e-commerce platform in just 4 weeks. The quality was exceptional and the team communicated proactively throughout.",
-    initials: "PS", name: "Priya Sharma",    role: "Founder, FashionHive",         color: "bg-rose-600",
+    quote: "KaizenSpark engineered our headless e-commerce architecture with absolute precision. Their inventory sync automation eliminated duplicate listings, resulting in a seamless omnichannel experience.",
+    initials: "PS", name: "Priya Sharma",    role: "Founder, FashionHive",         color: "bg-gradient-to-br from-rose-500 to-pink-600",
   },
   {
-    quote: "We came to KaizenSpark Tech with just an idea. They took it from wireframes to a fully deployed mobile app. Could not be happier with the outcome.",
-    initials: "AM", name: "Arjun Mehta",     role: "CTO, LogisticsPro",             color: "bg-blue-600",
+    quote: "The custom fleet tracking API and dashboard KaizenSpark developed has revolutionized our telemetry pipeline. Real-time updates now process in under 100ms with zero message drops.",
+    initials: "AM", name: "Arjun Mehta",     role: "CTO, LogisticsPro",             color: "bg-gradient-to-br from-blue-500 to-indigo-600",
   },
   {
-    quote: "Best digital agency we've worked with in Chennai. Their UI/UX work transformed our product's user retention completely.",
-    initials: "KR", name: "Keerthana R.",    role: "Product Manager, EduTech Startup", color: "bg-violet-600",
+    quote: "Our LMS couldn't scale past 5,000 concurrent students until KaizenSpark refactored our database cluster. We just hosted 40,000+ simultaneous exams with zero latency.",
+    initials: "KR", name: "Keerthana R.",    role: "Product Lead, EduTech Co.",     color: "bg-gradient-to-br from-violet-500 to-fuchsia-600",
   },
   {
-    quote: "The KaizenSpark Tech team felt like a true extension of our own team. They understood our business goals and coded accordingly.",
-    initials: "SN", name: "Sanjay Nair",     role: "CEO, RetailMax India",           color: "bg-emerald-600",
+    quote: "They integrated six legacy systems into a unified admin portal. What used to take our operations team hours of manual export and import now runs autonomously in real-time.",
+    initials: "SN", name: "Sanjay Nair",     role: "CEO, RetailMax India",           color: "bg-gradient-to-br from-emerald-500 to-teal-600",
   },
   {
-    quote: "Fast, professional, and genuinely passionate. Our restaurant app went live ahead of schedule and our customers love it.",
-    initials: "MJ", name: "Meenakshi J.",    role: "Operations Head, Spice Garden",  color: "bg-amber-600",
+    quote: "The progressive web application (PWA) they built has surpassed our expectations. Page load speeds are sub-second even on low-bandwidth rural connections.",
+    initials: "MJ", name: "Meenakshi J.",    role: "Operations Head, Spice Garden",  color: "bg-gradient-to-br from-amber-500 to-orange-600",
   },
   {
-    quote: "KaizenSpark Tech helped us register our company, set up our digital infrastructure, and build our first product — all in one month.",
-    initials: "VS", name: "Vikram S.",        role: "Co-Founder, HealthBridge",       color: "bg-teal-600",
+    quote: "They built our HIPAA-aligned telemetry dashboard and set up a highly compliant, zero-trust GCP environment. Outstanding execution and absolute engineering rigor.",
+    initials: "VS", name: "Vikram S.",        role: "Co-Founder, HealthBridge",       color: "bg-gradient-to-br from-teal-500 to-cyan-600",
   },
   {
-    quote: "Their SEO work tripled our organic traffic in 3 months. The content strategy was data-driven and actually worked.",
-    initials: "DK", name: "Divya K.",         role: "Marketing Lead, GreenHome",      color: "bg-green-600",
+    quote: "Their optimization work slashed our React bundle size by 60% and optimized Server Side Rendering. Organic search conversions rose by 40% in just two months.",
+    initials: "DK", name: "Divya K.",         role: "Marketing Lead, GreenHome",      color: "bg-gradient-to-br from-green-500 to-emerald-600",
   },
   {
-    quote: "We needed a complete CRM system built from scratch. KaizenSpark Tech delivered a solid, scalable solution under budget.",
-    initials: "RV", name: "Rahul Verma",      role: "Director, AutoServe India",      color: "bg-cyan-600",
+    quote: "A highly scalable automated scheduling and invoicing system that seamlessly integrated with our payment processor. Exceptional code quality and documentation.",
+    initials: "RV", name: "Rahul Verma",      role: "Director, AutoServe India",      color: "bg-gradient-to-br from-cyan-500 to-blue-600",
   },
   {
-    quote: "The attention to detail in the UI design was outstanding. Our brand guidelines were respected throughout the entire project.",
-    initials: "AB", name: "Ananya B.",        role: "Brand Head, StyleCo",            color: "bg-pink-600",
+    quote: "The pixel-perfect design-to-code execution from KaizenSpark was incredible. They brought our complex Figma animations to life with absolute butter-smooth motion.",
+    initials: "AB", name: "Ananya B.",        role: "Brand Head, StyleCo",            color: "bg-gradient-to-br from-pink-500 to-rose-600",
   },
   {
-    quote: "KaizenSpark Tech is not just a vendor — they're a strategic partner. Always thinking ahead about what's best for our growth.",
-    initials: "KP", name: "Kartik P.",        role: "Founder, FinEdge Solutions",     color: "bg-indigo-600",
+    quote: "We trusted KaizenSpark to develop our financial reporting pipeline. They engineered a high-integrity, audited ledger system that saves our analysts 20 hours a week.",
+    initials: "KP", name: "Kartik P.",        role: "Founder, FinEdge Solutions",     color: "bg-gradient-to-br from-indigo-500 to-violet-600",
   },
 ];
 
@@ -52,29 +52,37 @@ const TestimonialCard = ({
   quote, initials, name, role, color,
 }: typeof testimonials[0]) => (
   <motion.div
-    whileHover={{ y: -4, scale: 1.02 }}
+    whileHover={{ y: -4, scale: 1.01 }}
     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-    className="flex-shrink-0 w-[300px] bg-slate-900/60 border border-slate-800/70 hover:border-slate-700 rounded-2xl p-5 flex flex-col gap-4 cursor-default"
+    className="flex-shrink-0 w-[310px] bg-slate-900/40 backdrop-blur-md border border-slate-800/80 hover:border-blue-500/30 rounded-2xl p-5 flex flex-col gap-4 cursor-default relative overflow-hidden group"
     style={{ boxShadow: "inset 0 1px 0 0 rgba(255,255,255,0.03)" }}
   >
-    {/* Stars */}
-    <div className="flex gap-0.5">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <Star key={i} size={12} className="fill-amber-400 text-amber-400" />
-      ))}
+    {/* Subtle decorative glow in top-right */}
+    <div className="absolute top-0 right-0 w-16 h-16 bg-blue-500/5 rounded-full blur-lg pointer-events-none group-hover:bg-blue-500/10 transition-colors" />
+
+    {/* Stars & Quote Icon */}
+    <div className="flex items-center justify-between">
+      <div className="flex gap-0.5">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <Star key={i} size={11} className="fill-amber-400 text-amber-400" />
+        ))}
+      </div>
+      <Quote size={12} className="text-slate-700/60 stroke-[2]" />
     </div>
-    {/* Quote */}
-    <p className="text-slate-300 text-[13px] leading-relaxed flex-1">
-      "{quote}"
+
+    {/* Quote text */}
+    <p className="text-slate-300 text-[12.5px] leading-relaxed flex-1 font-medium italic">
+      “{quote}”
     </p>
-    {/* Author */}
-    <div className="flex items-center gap-3 pt-2 border-t border-slate-800/60">
-      <div className={`w-8 h-8 rounded-full ${color} flex items-center justify-center text-white text-[11px] font-bold flex-shrink-0`}>
+
+    {/* Author details */}
+    <div className="flex items-center gap-3 pt-3 border-t border-slate-800/50">
+      <div className={`w-8 h-8 rounded-xl ${color} flex items-center justify-center text-white text-[11px] font-extrabold flex-shrink-0 shadow-md`}>
         {initials}
       </div>
       <div>
-        <p className="text-white text-xs font-bold leading-none mb-0.5">{name}</p>
-        <p className="text-slate-500 text-[10px]">{role}</p>
+        <p className="text-white text-xs font-bold leading-none mb-1">{name}</p>
+        <p className="text-slate-500 text-[9.5px] font-semibold">{role}</p>
       </div>
     </div>
   </motion.div>

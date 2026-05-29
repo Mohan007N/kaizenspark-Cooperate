@@ -102,7 +102,7 @@ const GlobalPresence = () => {
         >
           {[
             { value: "7+", label: "Countries Served" },
-            { value: "50+", label: "Global Clients" },
+            { value: "70+", label: "Global Clients" },
             { value: "24/7", label: "Support Available" },
             { value: "3+", label: "Years of Delivery" },
           ].map((stat) => (

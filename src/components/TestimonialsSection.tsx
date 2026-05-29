@@ -8,8 +8,8 @@ const testimonials = [
     company: "FashionHive",
     initials: "PS",
     color: "from-violet-500 to-pink-500",
-    outcome: "3x revenue growth in 3 months",
-    text: "KaizenSpark delivered our entire e-commerce platform in 4 weeks. The quality was exceptional. They automated our entire inventory and order workflow — things we thought would take months.",
+    outcome: "Omnichannel inventory sync completed",
+    text: "KaizenSpark engineered our headless e-commerce architecture with absolute precision. Their inventory sync automation eliminated duplicate listings, resulting in a seamless omnichannel experience and a sub-second checkout pipeline.",
   },
   {
     name: "Vikram S.",
@@ -17,8 +17,8 @@ const testimonials = [
     company: "HealthBridge",
     initials: "VS",
     color: "from-emerald-500 to-teal-500",
-    outcome: "10,000+ app downloads in 2 months",
-    text: "This engineering team is highly professional, communicative, and delivers on time. They helped us set up our infrastructure and build our first product — all in one month.",
+    outcome: "HIPAA-compliant GCP environment",
+    text: "They built our HIPAA-aligned telemetry dashboard and set up a highly compliant, zero-trust cloud architecture. Absolute engineering rigor, detailed documentation, and a highly secure server deployment.",
   },
   {
     name: "Arjun Mehta",
@@ -26,8 +26,8 @@ const testimonials = [
     company: "LogisticsPro",
     initials: "AM",
     color: "from-blue-500 to-cyan-500",
-    outcome: "40% operational workload reduction",
-    text: "Excellent technical expertise and project management. KaizenSpark automated 60% of our operational workflow within 45 days — faster than expected and exactly what we needed.",
+    outcome: "Telemetry response times <100ms",
+    text: "The custom fleet tracking API and dashboard KaizenSpark developed has revolutionized our telemetry pipeline. Real-time updates now process in under 100ms with zero message drops and full observability.",
   },
   {
     name: "Divya K.",
@@ -35,8 +35,8 @@ const testimonials = [
     company: "GreenHome",
     initials: "DK",
     color: "from-amber-500 to-orange-500",
-    outcome: "Tripled organic search traffic",
-    text: "Our organic traffic tripled after their SEO and technical infrastructure work. Data-driven and results-focused — they show you the numbers, not just promises.",
+    outcome: "React bundle reduced by 60%",
+    text: "Their optimization work slashed our React bundle size by 60% and optimized Server Side Rendering. Page speeds are now lighting fast, directly lifting our search rankings and boosting conversions by 40%.",
   },
 ];
 
@@ -77,7 +77,7 @@ const TestimonialsSection = () => {
         </motion.div>
 
         {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 gap-5 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto px-4">
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
@@ -85,38 +85,49 @@ const TestimonialsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="group relative bg-slate-900/60 border border-slate-800/70 hover:border-slate-700/80 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5"
+              whileHover={{ y: -3 }}
+              className="group relative bg-slate-900/30 backdrop-blur-md border border-slate-850 hover:border-blue-500/25 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5 overflow-hidden"
             >
-              {/* Quote icon */}
-              <Quote size={20} className="text-slate-700 mb-4" />
+              {/* Subtle decorative glow in top-right */}
+              <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-xl pointer-events-none group-hover:bg-blue-500/10 transition-all duration-500" />
 
-              {/* Stars */}
-              <div className="flex gap-1 mb-3">
-                {[...Array(5)].map((_, k) => (
-                  <Star key={k} size={12} className="text-amber-400 fill-amber-400" />
-                ))}
-              </div>
+              {/* Quote Watermark */}
+              <Quote size={80} className="absolute -right-2 -bottom-2 text-slate-800/5 stroke-[1] select-none pointer-events-none group-hover:text-blue-500/5 group-hover:scale-105 transition-all duration-500" />
 
-              {/* Outcome highlight */}
-              <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r ${t.color} bg-opacity-10 mb-4`}>
-                <span className="text-[10px] font-bold text-white/90">{t.outcome}</span>
-              </div>
-
-              {/* Testimonial text */}
-              <p className="text-sm text-slate-300 leading-relaxed mb-6 italic">
-                "{t.text}"
-              </p>
-
-              {/* Author */}
-              <div className="flex items-center gap-3 pt-4 border-t border-slate-800/60">
-                <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-white font-bold text-xs flex-shrink-0 shadow-md`}>
-                  {t.initials}
+              <div className="relative z-10">
+                {/* Quote icon & Stars */}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-8 h-8 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shadow-sm shrink-0">
+                    <Quote size={13} className="stroke-[2.5]" />
+                  </div>
+                  <div className="flex gap-0.5">
+                    {[...Array(5)].map((_, k) => (
+                      <Star key={k} size={11} className="text-amber-400 fill-amber-400" />
+                    ))}
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm font-bold text-white">{t.name}</p>
-                  <p className="text-xs text-slate-500">
-                    {t.role} · {t.company}
-                  </p>
+
+                {/* Outcome highlight */}
+                <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r ${t.color} bg-opacity-10 mb-4`}>
+                  <span className="text-[10px] font-bold text-white/90">{t.outcome}</span>
+                </div>
+
+                {/* Testimonial text */}
+                <p className="text-slate-300 text-sm leading-relaxed mb-6 italic">
+                  “{t.text}”
+                </p>
+
+                {/* Author */}
+                <div className="flex items-center gap-3 pt-4 border-t border-slate-850">
+                  <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${t.color} flex items-center justify-center text-white font-extrabold text-xs flex-shrink-0 shadow-md`}>
+                    {t.initials}
+                  </div>
+                  <div>
+                    <p className="text-white text-xs font-bold leading-none mb-1">{t.name}</p>
+                    <p className="text-[10px] text-slate-500 font-semibold">
+                      {t.role} · {t.company}
+                    </p>
+                  </div>
                 </div>
               </div>
             </motion.div>

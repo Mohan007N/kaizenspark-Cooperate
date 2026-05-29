@@ -66,7 +66,7 @@ const EngineeringVisual = () => {
 
   const metrics = [
     { label: "Uptime",   value: "99.9%", color: "text-emerald-400", bg: "bg-emerald-500/8", border: "border-emerald-500/15" },
-    { label: "Clients",  value: "50+",   color: "text-blue-400",    bg: "bg-blue-500/8",    border: "border-blue-500/15"    },
+    { label: "Clients",  value: "70+",   color: "text-blue-400",    bg: "bg-blue-500/8",    border: "border-blue-500/15"    },
     { label: "Projects", value: "150+",  color: "text-violet-400",  bg: "bg-violet-500/8",  border: "border-violet-500/15"  },
   ];
 

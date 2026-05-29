@@ -172,7 +172,7 @@ const TrustedCompanies = () => {
         >
           {[
             { value: '150+', label: 'Projects Delivered' },
-            { value: '50+', label: 'Business Clients' },
+            { value: '70+', label: 'Business Clients' },
             { value: '12+', label: 'Industries Served' },
             { value: '99.9%', label: 'Infrastructure Uptime' },
             { value: '24/7', label: 'Technical Support' },
