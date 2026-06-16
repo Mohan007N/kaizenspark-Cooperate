@@ -123,23 +123,23 @@ const productsMegaMenu = {
 };
 
 const Navbar = () => {
-  const navigate  = useNavigate();
-  const location  = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const [mobileOpen,           setMobileOpen]           = useState(false);
-  const [servicesOpen,         setServicesOpen]         = useState(false);
-  const [productsOpen,         setProductsOpen]         = useState(false);
-  const [partnershipOpen,      setPartnershipOpen]      = useState(false);
-  const [contactOpen,          setContactOpen]          = useState(false);
-  const [mobileServicesOpen,   setMobileServicesOpen]   = useState(false);
-  const [mobileProductsOpen,   setMobileProductsOpen]   = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
+  const [partnershipOpen, setPartnershipOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const [mobilePartnershipOpen, setMobilePartnershipOpen] = useState(false);
-  const [scrolled,             setScrolled]             = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const servicesDropdownRef   = useRef<HTMLDivElement>(null);
-  const productsDropdownRef   = useRef<HTMLDivElement>(null);
+  const servicesDropdownRef = useRef<HTMLDivElement>(null);
+  const productsDropdownRef = useRef<HTMLDivElement>(null);
   const partnershipDropdownRef = useRef<HTMLDivElement>(null);
-  const contactDropdownRef     = useRef<HTMLDivElement>(null);
+  const contactDropdownRef = useRef<HTMLDivElement>(null);
 
   /* scroll listener */
   useEffect(() => {
@@ -192,7 +192,7 @@ const Navbar = () => {
   const handleServiceItemClick = (item: string) => {
     setMobileOpen(false);
     setServicesOpen(false);
-    
+
     const isWebAppDev = servicesMegaMenu.webDev.items.includes(item);
     const isEnterprise = servicesMegaMenu.enterprise.items.includes(item);
     const isDesign = servicesMegaMenu.design.items.includes(item);
@@ -200,7 +200,7 @@ const Navbar = () => {
 
     if (isWebAppDev) {
       navigate("/services/web-app-development");
-    } 
+    }
     else if (isEnterprise) {
       if (itemLower.includes("chatbot")) {
         navigate("/services/ai-automation");
@@ -213,25 +213,25 @@ const Navbar = () => {
       } else {
         navigate("/services/enterprise-solutions");
       }
-    } 
+    }
     else if (isDesign) {
       if (itemLower.includes("registration") || itemLower.includes("trademark")) {
         // Legal startup registrations go to Startup Support
         navigate("/services/startup-support");
-      } 
+      }
       else if (itemLower.includes("portfolio")) {
         // Portfolio sites go to Web & App Development
         navigate("/services/web-app-development");
-      } 
+      }
       else if (itemLower.includes("student") || itemLower.includes("final year")) {
         // Student projects and discounts go to the Contact page
         navigate("/contact");
-      } 
+      }
       else {
         // Creative design services go to UI/UX Design Page
         navigate("/services/ui-ux-design");
       }
-    } 
+    }
     else {
       navigate("/services");
     }
@@ -240,13 +240,13 @@ const Navbar = () => {
   const handleProductItemClick = (item: string) => {
     setMobileOpen(false);
     setProductsOpen(false);
-    
+
     const getProductSlug = (name: string): string => {
       const clean = name.toLowerCase()
         .replace(/[^a-z0-9\s-]/g, "")
         .trim()
         .replace(/\s+/g, "-");
-      
+
       if (clean === "learning-management-systems-lms") {
         return "learning-management-systems-lms-";
       }
@@ -257,20 +257,18 @@ const Navbar = () => {
     navigate(`/products/${slug}`);
   };
 
-  const isServicesActive   = location.pathname === "/services" || location.pathname.startsWith("/services");
-  const isProductsActive   = location.pathname === "/products" || location.pathname.startsWith("/products");
+  const isServicesActive = location.pathname === "/services" || location.pathname.startsWith("/services");
+  const isProductsActive = location.pathname === "/products" || location.pathname.startsWith("/products");
   const isPartnershipActive = location.pathname === "/partnership" || location.pathname.startsWith("/partnership");
 
   return (
     <header className="fixed top-4 left-0 w-full z-[99999] px-4 md:px-8 transition-all duration-300">
       <div
-        className={`mx-auto max-w-6xl relative transition-all duration-500 border ${
-          mobileOpen ? "rounded-2xl bg-slate-950" : "rounded-full"
-        } ${
-          scrolled
+        className={`mx-auto max-w-6xl relative transition-all duration-500 border ${mobileOpen ? "rounded-2xl bg-slate-950" : "rounded-full"
+          } ${scrolled
             ? "bg-slate-950 border-blue-500/20 shadow-xl shadow-black/50"
             : "bg-slate-950 border-slate-800/80 shadow-lg shadow-black/30"
-        }`}
+          }`}
       >
         {/* Main Bar inside pill */}
         <div className="flex items-center justify-between h-14 px-6">
@@ -278,7 +276,7 @@ const Navbar = () => {
           {/* Logo */}
           <button onClick={() => go("/")} className="flex items-center gap-2.5 group cursor-pointer">
             <div className="relative w-9 h-9 flex items-center justify-center transition-all duration-300 group-hover:scale-110">
-              <img src="/ChatGPT Image May 23, 2026, 07_58_53 PM.png" alt="KaizenSpark Tech"
+              <img src="/logo.svg" alt="KaizenSpark Tech"
                 className="w-full h-full object-contain drop-shadow-[0_0_10px_rgba(26,45,140,0.5)]" />
             </div>
             <div className="flex items-baseline gap-1">
@@ -310,11 +308,10 @@ const Navbar = () => {
                   setProductsOpen(false);
                   setServicesOpen(!servicesOpen);
                 }}
-                className={`flex items-center gap-1 text-[13px] px-3.5 py-1.5 rounded-full font-semibold transition-all duration-300 relative group ${
-                  isServicesActive || servicesOpen
+                className={`flex items-center gap-1 text-[13px] px-3.5 py-1.5 rounded-full font-semibold transition-all duration-300 relative group ${isServicesActive || servicesOpen
                     ? "text-blue-400 bg-blue-500/10"
                     : "text-slate-400 hover:text-white hover:bg-slate-800/40"
-                }`}
+                  }`}
               >
                 Services
                 <ChevronDown size={13}
@@ -334,112 +331,112 @@ const Navbar = () => {
                       transition={{ duration: 0.18 }}
                       className="w-[850px] bg-slate-950 border border-slate-800/80 rounded-2xl shadow-2xl shadow-black/90 overflow-hidden"
                     >
-                    {/* Header */}
-                    <div className="px-6 py-4 border-b border-slate-900 bg-slate-900/10 flex items-center justify-between">
-                      <div>
-                        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-blue-400">
-                          IT Solutions & Engineering Services
+                      {/* Header */}
+                      <div className="px-6 py-4 border-b border-slate-900 bg-slate-900/10 flex items-center justify-between">
+                        <div>
+                          <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-blue-400">
+                            IT Solutions & Engineering Services
+                          </p>
+                          <p className="text-[11px] text-slate-500 mt-0.5">
+                            Enterprise IT solutions, development, design, and strategic marketing
+                          </p>
+                        </div>
+                        <div className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">
+                          <Zap size={10} className="animate-pulse" /> Custom Integrations
+                        </div>
+                      </div>
+
+                      {/* Mega Columns Grid */}
+                      <div className="grid grid-cols-3 gap-6 p-6">
+                        {/* Column 1: Web & App Dev */}
+                        <div>
+                          <div className="flex items-center gap-2 mb-3.5 pb-2 border-b border-slate-900">
+                            <div className="w-6 h-6 rounded bg-blue-500/10 flex items-center justify-center text-blue-400">
+                              <Laptop size={12} />
+                            </div>
+                            <h4 className="text-[11px] font-bold text-blue-400 tracking-wider">
+                              {servicesMegaMenu.webDev.title}
+                            </h4>
+                          </div>
+                          <ul className="space-y-1.5">
+                            {servicesMegaMenu.webDev.items.map((item) => (
+                              <li key={item}>
+                                <button
+                                  onClick={() => handleServiceItemClick(item)}
+                                  className="text-[11.5px] text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-200 text-left w-full flex items-center gap-2"
+                                >
+                                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500/40" />
+                                  {item}
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Column 2: Enterprise Solutions */}
+                        <div>
+                          <div className="flex items-center gap-2 mb-3.5 pb-2 border-b border-slate-900">
+                            <div className="w-6 h-6 rounded bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                              <ShieldCheck size={12} />
+                            </div>
+                            <h4 className="text-[11px] font-bold text-cyan-400 tracking-wider">
+                              {servicesMegaMenu.enterprise.title}
+                            </h4>
+                          </div>
+                          <ul className="space-y-1.5">
+                            {servicesMegaMenu.enterprise.items.map((item) => (
+                              <li key={item}>
+                                <button
+                                  onClick={() => handleServiceItemClick(item)}
+                                  className="text-[11.5px] text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-200 text-left w-full flex items-center gap-2"
+                                >
+                                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-500/40" />
+                                  {item}
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Column 3: Design & More */}
+                        <div>
+                          <div className="flex items-center gap-2 mb-3.5 pb-2 border-b border-slate-900">
+                            <div className="w-6 h-6 rounded bg-indigo-500/10 flex items-center justify-center text-indigo-400">
+                              <Palette size={12} />
+                            </div>
+                            <h4 className="text-[11px] font-bold text-indigo-400 tracking-wider">
+                              {servicesMegaMenu.design.title}
+                            </h4>
+                          </div>
+                          <ul className="space-y-1.5">
+                            {servicesMegaMenu.design.items.map((item) => (
+                              <li key={item}>
+                                <button
+                                  onClick={() => handleServiceItemClick(item)}
+                                  className="text-[11.5px] text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-200 text-left w-full flex items-center gap-2"
+                                >
+                                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500/40" />
+                                  {item}
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+
+                      {/* Mega Menu Footer */}
+                      <div className="px-6 py-3.5 bg-slate-900/30 border-t border-slate-900 flex items-center justify-between">
+                        <p className="text-[10px] text-slate-500">
+                          Need custom scale implementations or consultation?
                         </p>
-                        <p className="text-[11px] text-slate-500 mt-0.5">
-                          Enterprise IT solutions, development, design, and strategic marketing
-                        </p>
+                        <button
+                          onClick={() => go("/contact")}
+                          className="text-[11px] font-bold text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1"
+                        >
+                          Request Consultation <ChevronRight size={12} />
+                        </button>
                       </div>
-                      <div className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">
-                        <Zap size={10} className="animate-pulse" /> Custom Integrations
-                      </div>
-                    </div>
-
-                    {/* Mega Columns Grid */}
-                    <div className="grid grid-cols-3 gap-6 p-6">
-                      {/* Column 1: Web & App Dev */}
-                      <div>
-                        <div className="flex items-center gap-2 mb-3.5 pb-2 border-b border-slate-900">
-                          <div className="w-6 h-6 rounded bg-blue-500/10 flex items-center justify-center text-blue-400">
-                            <Laptop size={12} />
-                          </div>
-                          <h4 className="text-[11px] font-bold text-blue-400 tracking-wider">
-                            {servicesMegaMenu.webDev.title}
-                          </h4>
-                        </div>
-                        <ul className="space-y-1.5">
-                          {servicesMegaMenu.webDev.items.map((item) => (
-                            <li key={item}>
-                              <button
-                                onClick={() => handleServiceItemClick(item)}
-                                className="text-[11.5px] text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-200 text-left w-full flex items-center gap-2"
-                              >
-                                <span className="w-1.5 h-1.5 rounded-full bg-blue-500/40" />
-                                {item}
-                              </button>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Column 2: Enterprise Solutions */}
-                      <div>
-                        <div className="flex items-center gap-2 mb-3.5 pb-2 border-b border-slate-900">
-                          <div className="w-6 h-6 rounded bg-cyan-500/10 flex items-center justify-center text-cyan-400">
-                            <ShieldCheck size={12} />
-                          </div>
-                          <h4 className="text-[11px] font-bold text-cyan-400 tracking-wider">
-                            {servicesMegaMenu.enterprise.title}
-                          </h4>
-                        </div>
-                        <ul className="space-y-1.5">
-                          {servicesMegaMenu.enterprise.items.map((item) => (
-                            <li key={item}>
-                              <button
-                                onClick={() => handleServiceItemClick(item)}
-                                className="text-[11.5px] text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-200 text-left w-full flex items-center gap-2"
-                              >
-                                <span className="w-1.5 h-1.5 rounded-full bg-cyan-500/40" />
-                                {item}
-                              </button>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Column 3: Design & More */}
-                      <div>
-                        <div className="flex items-center gap-2 mb-3.5 pb-2 border-b border-slate-900">
-                          <div className="w-6 h-6 rounded bg-indigo-500/10 flex items-center justify-center text-indigo-400">
-                            <Palette size={12} />
-                          </div>
-                          <h4 className="text-[11px] font-bold text-indigo-400 tracking-wider">
-                            {servicesMegaMenu.design.title}
-                          </h4>
-                        </div>
-                        <ul className="space-y-1.5">
-                          {servicesMegaMenu.design.items.map((item) => (
-                            <li key={item}>
-                              <button
-                                onClick={() => handleServiceItemClick(item)}
-                                className="text-[11.5px] text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-200 text-left w-full flex items-center gap-2"
-                              >
-                                <span className="w-1.5 h-1.5 rounded-full bg-indigo-500/40" />
-                                {item}
-                              </button>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-
-                    {/* Mega Menu Footer */}
-                    <div className="px-6 py-3.5 bg-slate-900/30 border-t border-slate-900 flex items-center justify-between">
-                      <p className="text-[10px] text-slate-500">
-                        Need custom scale implementations or consultation?
-                      </p>
-                      <button
-                        onClick={() => go("/contact")}
-                        className="text-[11px] font-bold text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1"
-                      >
-                        Request Consultation <ChevronRight size={12} />
-                      </button>
-                    </div>
-                  </motion.div>
+                    </motion.div>
                   </div>
                 )}
               </AnimatePresence>
@@ -452,11 +449,10 @@ const Navbar = () => {
                   setServicesOpen(false);
                   setProductsOpen(!productsOpen);
                 }}
-                className={`flex items-center gap-1 text-[13px] px-3.5 py-1.5 rounded-full font-semibold transition-all duration-300 relative group ${
-                  isProductsActive || productsOpen
+                className={`flex items-center gap-1 text-[13px] px-3.5 py-1.5 rounded-full font-semibold transition-all duration-300 relative group ${isProductsActive || productsOpen
                     ? "text-blue-400 bg-blue-500/10"
                     : "text-slate-400 hover:text-white hover:bg-slate-800/40"
-                }`}
+                  }`}
               >
                 Products
                 <ChevronDown size={13}
@@ -476,137 +472,137 @@ const Navbar = () => {
                       transition={{ duration: 0.18 }}
                       className="w-[920px] bg-slate-950 border border-slate-800/80 rounded-2xl shadow-2xl shadow-black/90 overflow-hidden"
                     >
-                    {/* Header */}
-                    <div className="px-6 py-4 border-b border-slate-900 bg-slate-900/10 flex items-center justify-between">
-                      <div>
-                        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-blue-400">
-                          KaizenSpark Software Products
+                      {/* Header */}
+                      <div className="px-6 py-4 border-b border-slate-900 bg-slate-900/10 flex items-center justify-between">
+                        <div>
+                          <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-blue-400">
+                            KaizenSpark Software Products
+                          </p>
+                          <p className="text-[11px] text-slate-500 mt-0.5">
+                            Ready-to-deploy platforms, industry systems, and workflow automation
+                          </p>
+                        </div>
+                        <div className="flex items-center gap-1 text-[10px] px-2.5 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">
+                          <Zap size={10} className="animate-pulse" /> Off-The-Shelf & Custom
+                        </div>
+                      </div>
+
+                      {/* Mega Columns Grid (4 columns) */}
+                      <div className="grid grid-cols-4 gap-5 p-6">
+                        {/* Column 1: Business Software */}
+                        <div>
+                          <div className="flex items-center gap-2 mb-3.5 pb-2 border-b border-slate-900">
+                            <div className="w-6 h-6 rounded bg-blue-500/10 flex items-center justify-center text-blue-400">
+                              <Briefcase size={12} />
+                            </div>
+                            <h4 className="text-[10.5px] font-bold text-blue-400 tracking-wider">
+                              {productsMegaMenu.business.title}
+                            </h4>
+                          </div>
+                          <ul className="space-y-1.5">
+                            {productsMegaMenu.business.items.map((item) => (
+                              <li key={item}>
+                                <button
+                                  onClick={() => handleProductItemClick(item)}
+                                  className="text-[11px] text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-200 text-left w-full flex items-center gap-2"
+                                >
+                                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500/40" />
+                                  {item}
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Column 2: Education */}
+                        <div>
+                          <div className="flex items-center gap-2 mb-3.5 pb-2 border-b border-slate-900">
+                            <div className="w-6 h-6 rounded bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                              <GraduationCap size={12} />
+                            </div>
+                            <h4 className="text-[10.5px] font-bold text-cyan-400 tracking-wider">
+                              {productsMegaMenu.education.title}
+                            </h4>
+                          </div>
+                          <ul className="space-y-1.5">
+                            {productsMegaMenu.education.items.map((item) => (
+                              <li key={item}>
+                                <button
+                                  onClick={() => handleProductItemClick(item)}
+                                  className="text-[11px] text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-200 text-left w-full flex items-center gap-2"
+                                >
+                                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-500/40" />
+                                  {item}
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Column 3: Industry Solutions */}
+                        <div>
+                          <div className="flex items-center gap-2 mb-3.5 pb-2 border-b border-slate-900">
+                            <div className="w-6 h-6 rounded bg-indigo-500/10 flex items-center justify-center text-indigo-400">
+                              <Building2 size={12} />
+                            </div>
+                            <h4 className="text-[10.5px] font-bold text-indigo-400 tracking-wider">
+                              {productsMegaMenu.industry.title}
+                            </h4>
+                          </div>
+                          <ul className="space-y-1.5">
+                            {productsMegaMenu.industry.items.map((item) => (
+                              <li key={item}>
+                                <button
+                                  onClick={() => handleProductItemClick(item)}
+                                  className="text-[11px] text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-200 text-left w-full flex items-center gap-2"
+                                >
+                                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500/40" />
+                                  {item}
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Column 4: AI & Automation */}
+                        <div>
+                          <div className="flex items-center gap-2 mb-3.5 pb-2 border-b border-slate-900">
+                            <div className="w-6 h-6 rounded bg-purple-500/10 flex items-center justify-center text-purple-400">
+                              <Cpu size={12} />
+                            </div>
+                            <h4 className="text-[10.5px] font-bold text-purple-400 tracking-wider">
+                              {productsMegaMenu.automation.title}
+                            </h4>
+                          </div>
+                          <ul className="space-y-1.5">
+                            {productsMegaMenu.automation.items.map((item) => (
+                              <li key={item}>
+                                <button
+                                  onClick={() => handleProductItemClick(item)}
+                                  className="text-[11px] text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-200 text-left w-full flex items-center gap-2"
+                                >
+                                  <span className="w-1.5 h-1.5 rounded-full bg-purple-500/40" />
+                                  {item}
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+
+                      {/* Mega Menu Footer */}
+                      <div className="px-6 py-3.5 bg-slate-900/30 border-t border-slate-900 flex items-center justify-between">
+                        <p className="text-[10px] text-slate-500">
+                          Need a demo or request customization on any product?
                         </p>
-                        <p className="text-[11px] text-slate-500 mt-0.5">
-                          Ready-to-deploy platforms, industry systems, and workflow automation
-                        </p>
+                        <button
+                          onClick={() => go("/contact")}
+                          className="text-[11px] font-bold text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1"
+                        >
+                          Book a Free Demo <ChevronRight size={12} />
+                        </button>
                       </div>
-                      <div className="flex items-center gap-1 text-[10px] px-2.5 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">
-                        <Zap size={10} className="animate-pulse" /> Off-The-Shelf & Custom
-                      </div>
-                    </div>
-
-                    {/* Mega Columns Grid (4 columns) */}
-                    <div className="grid grid-cols-4 gap-5 p-6">
-                      {/* Column 1: Business Software */}
-                      <div>
-                        <div className="flex items-center gap-2 mb-3.5 pb-2 border-b border-slate-900">
-                          <div className="w-6 h-6 rounded bg-blue-500/10 flex items-center justify-center text-blue-400">
-                            <Briefcase size={12} />
-                          </div>
-                          <h4 className="text-[10.5px] font-bold text-blue-400 tracking-wider">
-                            {productsMegaMenu.business.title}
-                          </h4>
-                        </div>
-                        <ul className="space-y-1.5">
-                          {productsMegaMenu.business.items.map((item) => (
-                            <li key={item}>
-                              <button
-                                onClick={() => handleProductItemClick(item)}
-                                className="text-[11px] text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-200 text-left w-full flex items-center gap-2"
-                              >
-                                <span className="w-1.5 h-1.5 rounded-full bg-blue-500/40" />
-                                {item}
-                              </button>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Column 2: Education */}
-                      <div>
-                        <div className="flex items-center gap-2 mb-3.5 pb-2 border-b border-slate-900">
-                          <div className="w-6 h-6 rounded bg-cyan-500/10 flex items-center justify-center text-cyan-400">
-                            <GraduationCap size={12} />
-                          </div>
-                          <h4 className="text-[10.5px] font-bold text-cyan-400 tracking-wider">
-                            {productsMegaMenu.education.title}
-                          </h4>
-                        </div>
-                        <ul className="space-y-1.5">
-                          {productsMegaMenu.education.items.map((item) => (
-                            <li key={item}>
-                              <button
-                                onClick={() => handleProductItemClick(item)}
-                                className="text-[11px] text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-200 text-left w-full flex items-center gap-2"
-                              >
-                                <span className="w-1.5 h-1.5 rounded-full bg-cyan-500/40" />
-                                {item}
-                              </button>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Column 3: Industry Solutions */}
-                      <div>
-                        <div className="flex items-center gap-2 mb-3.5 pb-2 border-b border-slate-900">
-                          <div className="w-6 h-6 rounded bg-indigo-500/10 flex items-center justify-center text-indigo-400">
-                            <Building2 size={12} />
-                          </div>
-                          <h4 className="text-[10.5px] font-bold text-indigo-400 tracking-wider">
-                            {productsMegaMenu.industry.title}
-                          </h4>
-                        </div>
-                        <ul className="space-y-1.5">
-                          {productsMegaMenu.industry.items.map((item) => (
-                            <li key={item}>
-                              <button
-                                onClick={() => handleProductItemClick(item)}
-                                className="text-[11px] text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-200 text-left w-full flex items-center gap-2"
-                              >
-                                <span className="w-1.5 h-1.5 rounded-full bg-indigo-500/40" />
-                                {item}
-                              </button>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Column 4: AI & Automation */}
-                      <div>
-                        <div className="flex items-center gap-2 mb-3.5 pb-2 border-b border-slate-900">
-                          <div className="w-6 h-6 rounded bg-purple-500/10 flex items-center justify-center text-purple-400">
-                            <Cpu size={12} />
-                          </div>
-                          <h4 className="text-[10.5px] font-bold text-purple-400 tracking-wider">
-                            {productsMegaMenu.automation.title}
-                          </h4>
-                        </div>
-                        <ul className="space-y-1.5">
-                          {productsMegaMenu.automation.items.map((item) => (
-                            <li key={item}>
-                              <button
-                                onClick={() => handleProductItemClick(item)}
-                                className="text-[11px] text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-200 text-left w-full flex items-center gap-2"
-                              >
-                                <span className="w-1.5 h-1.5 rounded-full bg-purple-500/40" />
-                                {item}
-                              </button>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-
-                    {/* Mega Menu Footer */}
-                    <div className="px-6 py-3.5 bg-slate-900/30 border-t border-slate-900 flex items-center justify-between">
-                      <p className="text-[10px] text-slate-500">
-                        Need a demo or request customization on any product?
-                      </p>
-                      <button
-                        onClick={() => go("/contact")}
-                        className="text-[11px] font-bold text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1"
-                      >
-                        Book a Free Demo <ChevronRight size={12} />
-                      </button>
-                    </div>
-                  </motion.div>
+                    </motion.div>
                   </div>
                 )}
               </AnimatePresence>
@@ -620,11 +616,10 @@ const Navbar = () => {
                   setProductsOpen(false);
                   setPartnershipOpen(!partnershipOpen);
                 }}
-                className={`flex items-center gap-1 text-[13px] px-3.5 py-1.5 rounded-full font-semibold transition-all duration-300 relative group ${
-                  isPartnershipActive || partnershipOpen
+                className={`flex items-center gap-1 text-[13px] px-3.5 py-1.5 rounded-full font-semibold transition-all duration-300 relative group ${isPartnershipActive || partnershipOpen
                     ? "text-emerald-400 bg-emerald-500/10"
                     : "text-slate-400 hover:text-white hover:bg-slate-800/40"
-                }`}
+                  }`}
               >
                 Partnership
                 <ChevronDown size={13}
@@ -739,7 +734,7 @@ const Navbar = () => {
                           </div>
                         </button>
                         <a
-                          href="https://client-ui-v1-5.vercel.app/login"
+                          href="https://kaizensparktech.com/portal/login"
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={() => setContactOpen(false)}
@@ -774,21 +769,19 @@ const Navbar = () => {
         </div>
 
         {/* ── Mobile Nav dropdown body ── */}
-        <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          mobileOpen ? "max-h-[600px] opacity-100 px-4 pb-4" : "max-h-0 opacity-0"
-        }`}>
+        <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileOpen ? "max-h-[600px] opacity-100 px-4 pb-4" : "max-h-0 opacity-0"
+          }`}>
           <nav className="bg-slate-950/40 border-t border-slate-900/60 pt-2 space-y-1 overflow-y-auto max-h-[450px]">
             {/* Home, About */}
             {[
-              { label: "Home",  path: "/" },
+              { label: "Home", path: "/" },
               { label: "About", path: "/about" },
             ].map((l) => (
               <button key={l.path} onClick={() => go(l.path)}
-                className={`block w-full text-left px-4 py-2.5 text-xs font-medium rounded-lg transition-all ${
-                  location.pathname === l.path
+                className={`block w-full text-left px-4 py-2.5 text-xs font-medium rounded-lg transition-all ${location.pathname === l.path
                     ? "text-blue-400 bg-blue-500/10"
                     : "text-slate-400 hover:text-white hover:bg-slate-900/40"
-                }`}>
+                  }`}>
                 {l.label}
               </button>
             ))}
@@ -800,9 +793,8 @@ const Navbar = () => {
                   setMobileProductsOpen(false);
                   setMobileServicesOpen(!mobileServicesOpen);
                 }}
-                className={`flex items-center justify-between w-full px-4 py-2.5 text-xs font-medium transition-all ${
-                  isServicesActive ? "text-blue-400 bg-blue-500/10" : "text-slate-400 hover:text-white hover:bg-slate-900/40"
-                }`}
+                className={`flex items-center justify-between w-full px-4 py-2.5 text-xs font-medium transition-all ${isServicesActive ? "text-blue-400 bg-blue-500/10" : "text-slate-400 hover:text-white hover:bg-slate-900/40"
+                  }`}
               >
                 Services
                 <ChevronDown size={14} className={`transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`} />
@@ -822,8 +814,8 @@ const Navbar = () => {
                       </p>
                       <div className="grid grid-cols-2 gap-0.5">
                         {servicesMegaMenu.webDev.items.map((item) => (
-                          <button 
-                            key={item} 
+                          <button
+                            key={item}
                             onClick={() => handleServiceItemClick(item)}
                             className="text-[10px] text-slate-400 hover:text-white text-left px-2 py-0.5 truncate"
                           >
@@ -839,8 +831,8 @@ const Navbar = () => {
                       </p>
                       <div className="grid grid-cols-2 gap-0.5">
                         {servicesMegaMenu.enterprise.items.map((item) => (
-                          <button 
-                            key={item} 
+                          <button
+                            key={item}
                             onClick={() => handleServiceItemClick(item)}
                             className="text-[10px] text-slate-400 hover:text-white text-left px-2 py-0.5 truncate"
                           >
@@ -856,8 +848,8 @@ const Navbar = () => {
                       </p>
                       <div className="grid grid-cols-2 gap-0.5">
                         {servicesMegaMenu.design.items.map((item) => (
-                          <button 
-                            key={item} 
+                          <button
+                            key={item}
                             onClick={() => handleServiceItemClick(item)}
                             className="text-[10px] text-slate-400 hover:text-white text-left px-2 py-0.5 truncate"
                           >
@@ -878,9 +870,8 @@ const Navbar = () => {
                   setMobileServicesOpen(false);
                   setMobileProductsOpen(!mobileProductsOpen);
                 }}
-                className={`flex items-center justify-between w-full px-4 py-2.5 text-xs font-medium transition-all ${
-                  isProductsActive ? "text-blue-400 bg-blue-500/10" : "text-slate-400 hover:text-white hover:bg-slate-900/40"
-                }`}
+                className={`flex items-center justify-between w-full px-4 py-2.5 text-xs font-medium transition-all ${isProductsActive ? "text-blue-400 bg-blue-500/10" : "text-slate-400 hover:text-white hover:bg-slate-900/40"
+                  }`}
               >
                 Products
                 <ChevronDown size={14} className={`transition-transform ${mobileProductsOpen ? "rotate-180" : ""}`} />
@@ -900,8 +891,8 @@ const Navbar = () => {
                       </p>
                       <div className="grid grid-cols-2 gap-0.5">
                         {productsMegaMenu.business.items.map((item) => (
-                          <button 
-                            key={item} 
+                          <button
+                            key={item}
                             onClick={() => handleProductItemClick(item)}
                             className="text-[10px] text-slate-400 hover:text-white text-left px-2 py-0.5 truncate"
                           >
@@ -917,8 +908,8 @@ const Navbar = () => {
                       </p>
                       <div className="grid grid-cols-2 gap-0.5">
                         {productsMegaMenu.education.items.map((item) => (
-                          <button 
-                            key={item} 
+                          <button
+                            key={item}
                             onClick={() => handleProductItemClick(item)}
                             className="text-[10px] text-slate-400 hover:text-white text-left px-2 py-0.5 truncate"
                           >
@@ -934,8 +925,8 @@ const Navbar = () => {
                       </p>
                       <div className="grid grid-cols-2 gap-0.5">
                         {productsMegaMenu.industry.items.map((item) => (
-                          <button 
-                            key={item} 
+                          <button
+                            key={item}
                             onClick={() => handleProductItemClick(item)}
                             className="text-[10px] text-slate-400 hover:text-white text-left px-2 py-0.5 truncate"
                           >
@@ -951,8 +942,8 @@ const Navbar = () => {
                       </p>
                       <div className="grid grid-cols-2 gap-0.5">
                         {productsMegaMenu.automation.items.map((item) => (
-                          <button 
-                            key={item} 
+                          <button
+                            key={item}
                             onClick={() => handleProductItemClick(item)}
                             className="text-[10px] text-slate-400 hover:text-white text-left px-2 py-0.5 truncate"
                           >
@@ -969,16 +960,15 @@ const Navbar = () => {
             {/* Partnership, Careers, Blog */}
             {[
               { label: "Become a Partner", path: "/partnership" },
-              { label: "Refer a Client",   path: "/partnership/refer-client" },
-              { label: "Careers",          path: "/careers" },
-              { label: "Blog",             path: "/blog" },
+              { label: "Refer a Client", path: "/partnership/refer-client" },
+              { label: "Careers", path: "/careers" },
+              { label: "Blog", path: "/blog" },
             ].map((l) => (
               <button key={l.path} onClick={() => go(l.path)}
-                className={`block w-full text-left px-4 py-2.5 text-xs font-medium rounded-lg transition-all ${
-                  location.pathname === l.path
+                className={`block w-full text-left px-4 py-2.5 text-xs font-medium rounded-lg transition-all ${location.pathname === l.path
                     ? "text-blue-400 bg-blue-500/10"
                     : "text-slate-400 hover:text-white hover:bg-slate-900/40"
-                }`}>
+                  }`}>
                 {l.label}
               </button>
             ))}
@@ -990,7 +980,7 @@ const Navbar = () => {
                 <Mail size={13} /> Contact Us
               </button>
               <a
-                href="https://client-ui-v1-5.vercel.app/login"
+                href="https://kaizensparktech.com/portal/login"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileOpen(false)}
@@ -1014,11 +1004,10 @@ const NavBtn = ({
 }) => (
   <button
     onClick={onClick}
-    className={`text-[13px] px-3.5 py-1.5 rounded-full font-semibold transition-all duration-300 relative group ${
-      active
+    className={`text-[13px] px-3.5 py-1.5 rounded-full font-semibold transition-all duration-300 relative group ${active
         ? "text-blue-400 bg-blue-500/10"
         : "text-slate-400 hover:text-white hover:bg-slate-800/50"
-    }`}
+      }`}
   >
     {label}
     {active && (

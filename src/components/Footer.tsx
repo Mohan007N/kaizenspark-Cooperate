@@ -61,7 +61,7 @@ const Footer = () => {
             >
               <div className="w-8 h-8 flex items-center justify-center">
                 <img
-                  src="/ChatGPT Image May 23, 2026, 07_58_53 PM.png"
+                  src="/logo.svg"
                   alt="KaizenSpark Tech"
                   className="w-full h-full object-contain"
                 />
